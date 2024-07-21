@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Sheet Music Previews</title>
+
+    <!-- Load external CSS styles -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body onload="sortList()">
+
+    <h1 class="w3-center">Sheet Music Previews</h1>
+    <ul id="ChartList" class="w3-ul">
+        <li><a href="./Charts/No_Fear_In_Love.pdf">No Fear In Love (Piano) - E</a></li>
+        <li><a href="./Charts/Christ_Our_King_Village_Lights.pdf">Christ Our King (Piano) - G</a></li>
+        <li><a href="./Charts/NoFearInLoveLeadsheet.pdf">No Fear In Love (Leadsheet) - G</a></li>
+        <li><a href="./Charts/NoFearInLoveLeadsheet_E_.pdf">No Fear In Love (Leadsheet) - E</a></li>
+        <li><a href="./Charts/AsTheDeerLongsDominicMacAller_Piano_-Dm.pdf">As The Deer Longs (Piano) - Dm (Dominic
+                MacAller arrangment)</a></li>
+        <li><a href="./Charts/GreatAreYouLord_LeadSheet_-G.pdf">Great Are You Lord (Leadsheet) - G</a></li>
+        <li><a href="./Charts/InChristAlone_Leadsheet_-D.pdf">In Christ Alone (Leadsheet) - D</a></li>
+        <li><a href="./Charts/InChristAlone_Piano_-D.pdf">In Christ Alone (Piano) - D</a></li>
+        <li><a href="./Charts/CelticPentecostSequencePreview_Piano_-G.pdf">Celtic Pentecost Sequence (Organ) - G</a></li>
+        <li><a href="./Charts/JesusAtTheCentre_Leadsheet_-G.pdf">Jesus At The Centre (Leadsheet) - G</a></li>
+        <li><a href="./Charts/KingOfKings_PianoOnly_-D.pdf">King of Kings (Piano Only) - D</a></li>
+        <li><a href="./Charts/Mass_of_St_Francis_Simplified-Separated.pdf">Mass of St Francis Simplified Harmony (Leadsheet)</a></li>
+        <li><a href="./Charts/OpenTheEyesOfMyHeart_Piano_-E.pdff">Open The Eyes of My Heart (Piano) - E</a></li>
+        <li><a href="./Charts/StayWithMeVerses.pdf">Stay With Me verses (Vocal)</a></li>
+        <li><a href="./Charts/TakeUpOurCrossHart_Piano_-A.pdf">Take Up Our Cross (Piano) - A</a></li>
+        <li><a href="./Charts/FilledWithTheSpiritsPower_Leadsheet_-D.pdf">Filled With The Spirit's Power (Leadsheet) - D</a></li>
+    </ul>
+    <script>
+        function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("ChartList");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    // Loop through all list items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Check if the next item should
+      switch place with the current item: */
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        /* If next item is alphabetically lower than current item,
+        mark as a switch and break the loop: */
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+    </script>
+    <!-- Load external JavaScript -->
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
