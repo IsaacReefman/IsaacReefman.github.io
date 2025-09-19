@@ -68,6 +68,10 @@ async function renderToday() {
 
   const listEl = document.getElementById("recipe-list");
   listEl.innerHTML = `<li>Today, you should make <strong>${easy.description}</strong> or <strong>${lessEasy.description}</strong> for dinner.</li>`;
+  
+  // ✅ Hide loading, show content
+  document.getElementById("status").style.display = "none";
+  document.getElementById("content").style.display = "block";
 }
 
 // Render full recipe list
