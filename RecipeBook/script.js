@@ -29,7 +29,7 @@ async function seedDatabase() {
   if (ingredientCount === 0 && collectionCount === 0 && quantityCount === 0 && scheduleCount === 0) {
     console.log("Seeding database from JSON files...");
 
-    const [ingredients, collections, quantities] = await Promise.all([
+    const [ingredients, collections, quantities, schedule] = await Promise.all([
       fetchJSON("ingredient.json"),
       fetchJSON("collection.json"),
       fetchJSON("quantity.json"),
