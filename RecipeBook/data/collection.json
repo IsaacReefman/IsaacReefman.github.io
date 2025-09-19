@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "description": "Pantry",
+    "type": "pantry"
+  },
+  {
+    "id": 2,
+    "description": "Shopping list",
+    "type": "shopping-list"
+  },
+  {
+    "id": 3,
+    "description": "Spaghetti Bolognaise",
+    "type": "recipe",
+    "methodBasic": "Cook <protein> in a pan, add pasta sauce, serve with cooked <carb>.",
+    "methodDetailed": "Brown the <protein> in a large pan over medium heat. Stir in the pasta sauce and simmer for 10 minutes. Meanwhile, cook the <carb> in boiling salted water until al dente. Drain and serve topped with the sauce."
+  },
+  {
+    "id": 4,
+    "description": "Chorizo Pasta Bake",
+    "type": "recipe",
+    "methodBasic": "Cook <protein> and <carb>, mix with sauce, top with cheese, bake until golden."
+  },
+  {
+    "id": 5,
+    "description": "Tuna Mornay",
+    "type": "recipe",
+    "methodBasic": "Mix <protein> with cooked <carb> and creamy sauce, bake until bubbling."
+  },
+  {
+    "id": 6,
+    "description": "Chili Con Carne",
+    "type": "recipe",
+    "methodBasic": "Cook <protein> with beans, tomatoes, and spices. Serve with <carb>."
+  },
+  {
+    "id": 7,
+    "description": "Bibimbap",
+    "type": "recipe",
+    "methodBasic": "Cook <protein> and assorted <veg>. Serve over <carb> with sauce and fried egg."
+  },
+  {
+    "id": 8,
+    "description": "Butter Chicken",
+    "type": "recipe",
+    "methodBasic": "Cook <protein>, add butter chicken sauce, simmer, serve with <carb>."
+  },
+  {
+    "id": 9,
+    "description": "Honey Mustard Chicken (with rice)",
+    "type": "recipe",
+    "methodBasic": "Cook <protein>, add honey mustard sauce, serve with <carb>."
+  },
+  {
+    "id": 10,
+    "description": "Honey Soy Chicken (noodles)",
+    "type": "recipe",
+    "methodBasic": "Cook <protein>, add honey soy sauce, toss with <carb>."
+  },
+  {
+    "id": 11,
+    "description": "Shepherd's Pie",
+    "type": "recipe",
+    "methodBasic": "Cook <protein> with veg, top with mashed <carb>, bake until golden."
+  },
+  {
+    "id": 12,
+    "description": "Chops with mash and veg",
+    "type": "recipe",
+    "methodBasic": "Cook <protein>, serve with mashed <carb> and steamed <veg>."
+  },
+  {
+    "id": 13,
+    "description": "Frozen Pizza",
+    "type": "ready-meal",
+    "methodBasic": "Fuck it. You've had a rough day. This'll do."
+  },
+  {
+    "id": 14,
+    "description": "Frozen Pies",
+    "type": "ready-meal",
+    "methodBasic": "Yeah, I hear you – let's just get the kids fed and in bed."
+  },
+  {
+    "id": 15,
+    "description": "Egg and Beans on Toast",
+    "type": "recipe",
+    "methodBasic": "Cook eggs and heat beans, serve over toast. It's not rocket science. Maybe ask ppl if they want their eggs fried or scrambled."
+  },
+  {
+    "id": 16,
+    "description": "Quick Veggie Stir-Fry",
+    "type": "recipe",
+    "methodBasic": "Stir-fry <veg> with sauce, add <protein> if desired, serve over <carb>."
+  },
+  {
+    "id": 17,
+    "description": "Cheese Toasties",
+    "type": "recipe",
+    "methodBasic": "Butter bread, add cheese, toast until golden. Serve with soup if you like."
+  }
+]
