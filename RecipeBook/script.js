@@ -73,6 +73,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
+  // === NEW: Helpers to resolve <placeholders> in method text ===
+  function buildTypeLookup(qs, ings) {
+    const byType = new Map(); // type -> first description seen in this recipe
+    for (const q of qs) {
+      const ing = ings.find(i => i?.id === q.ingredientId);
+      if (!ing?.type || !ing?.description) continue;
+      const t = String(ing.type).toLowerCase();
+      if (!byType.has(t)) byType.set(t, ing.description);
+    }
+    return byType;
+  }
+
+  function normalizePlaceholder(name) {
+    const n = String(name).toLowerCase();
+    const map = {
+      protein: "protein", proteins: "protein",
+      base: "base", carb: "base", carbs: "base", starch: "base",
+      veg: "veg", veggie: "veg", veggies: "veg", vegetable: "veg", vegetables: "veg",
+      flavour: "flavour", flavor: "flavour",
+      function: "function", sauce: "sauce" // keep fallback behavior if you add "sauce" types later
+    };
+    return map[n] ?? n;
+  }
+
+  function resolvePlaceholders(text, typeLookup) {
+    if (!text) return "";
+    return text.replace(/<([\w-]+)>/g, (_, token) => {
+      const key = normalizePlaceholder(token);
+      return typeLookup.get(key) ?? `<${token}>`;
+    });
+  }
+
   async function openRecipePanel(collectionId) {
     const recipe = await db.collections.get(collectionId);
     if (!recipe) return;
@@ -89,14 +121,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       return `<li>${qty}${unit} ${name}</li>`;
     }).join("");
 
+    // === NEW: substitute placeholders in method using first matching ingredient by type
+    const typeLookup = buildTypeLookup(qs, ings);
+    const methodRaw = recipe.methodDetailed ?? recipe.methodBasic ?? "";
+    const methodResolved = resolvePlaceholders(methodRaw, typeLookup);
+
     panelBodyEl.innerHTML = `
       <h2>${recipe.description}</h2>
       ${items ? `<h3>Ingredients</h3><ul>${items}</ul>` : ""}
-      ${recipe.methodDetailed
-        ? `<h3>Method</h3><p>${recipe.methodDetailed}</p>`
-        : recipe.methodBasic
-          ? `<h3>Method</h3><p>${recipe.methodBasic}</p>`
-          : ""}
+      ${methodResolved ? `<h3>Method</h3><p>${methodResolved}</p>` : ""}
     `;
     panelEl.hidden = false;
   }
