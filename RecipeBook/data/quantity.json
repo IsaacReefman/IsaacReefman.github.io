@@ -1,86 +1,51 @@
 [
-  /* Pantry – empty starter */
-  /* collectionId: 1 */
-
-  /* Shopping list – empty starter */
-  /* collectionId: 2 */
-
-  /* Spaghetti Bolognaise */
   { "collectionId": 3, "ingredientId": 16, "quantity": 500 },
   { "collectionId": 3, "ingredientId": 9, "quantity": 400 },
   { "collectionId": 3, "ingredientId": 35, "quantity": 1 },
-
-  /* Chorizo Pasta Bake */
   { "collectionId": 4, "ingredientId": 91, "quantity": 400 },
   { "collectionId": 4, "ingredientId": 10, "quantity": 400 },
   { "collectionId": 4, "ingredientId": 35, "quantity": 1 },
   { "collectionId": 4, "ingredientId": 72, "quantity": 200 },
-
-  /* Tuna Mornay */
   { "collectionId": 5, "ingredientId": 92, "quantity": 2 },
   { "collectionId": 5, "ingredientId": 10, "quantity": 400 },
   { "collectionId": 5, "ingredientId": 75, "quantity": 500 },
   { "collectionId": 5, "ingredientId": 72, "quantity": 200 },
-
-  /* Chili Con Carne */
   { "collectionId": 6, "ingredientId": 16, "quantity": 500 },
   { "collectionId": 6, "ingredientId": 28, "quantity": 2 },
   { "collectionId": 6, "ingredientId": 37, "quantity": 2 },
   { "collectionId": 6, "ingredientId": 46, "quantity": 20 },
   { "collectionId": 6, "ingredientId": 11, "quantity": 400 },
-
-  /* Bibimbap */
   { "collectionId": 7, "ingredientId": 17, "quantity": 500 },
   { "collectionId": 7, "ingredientId": 11, "quantity": 400 },
   { "collectionId": 7, "ingredientId": 40, "quantity": 200 },
   { "collectionId": 7, "ingredientId": 43, "quantity": 200 },
   { "collectionId": 7, "ingredientId": 27, "quantity": 4 },
-
-  /* Butter Chicken */
   { "collectionId": 8, "ingredientId": 17, "quantity": 500 },
   { "collectionId": 8, "ingredientId": 93, "quantity": 1 },
   { "collectionId": 8, "ingredientId": 11, "quantity": 400 },
-
-  /* Honey Mustard Chicken (with rice) */
   { "collectionId": 9, "ingredientId": 17, "quantity": 500 },
   { "collectionId": 9, "ingredientId": 70, "quantity": 60 },
   { "collectionId": 9, "ingredientId": 53, "quantity": 60 },
   { "collectionId": 9, "ingredientId": 11, "quantity": 400 },
-
-  /* Honey Soy Chicken (noodles) */
   { "collectionId": 10, "ingredientId": 17, "quantity": 500 },
   { "collectionId": 10, "ingredientId": 70, "quantity": 60 },
   { "collectionId": 10, "ingredientId": 49, "quantity": 60 },
   { "collectionId": 10, "ingredientId": 94, "quantity": 400 },
-
-  /* Shepherd's Pie */
   { "collectionId": 11, "ingredientId": 16, "quantity": 500 },
   { "collectionId": 11, "ingredientId": 31, "quantity": 400 },
   { "collectionId": 11, "ingredientId": 7, "quantity": 1000 },
-
-  /* Chops with mash and veg */
   { "collectionId": 12, "ingredientId": 23, "quantity": 800 },
   { "collectionId": 12, "ingredientId": 7, "quantity": 1000 },
   { "collectionId": 12, "ingredientId": 41, "quantity": 400 },
-
-  /* Frozen Pizza */
   { "collectionId": 13, "ingredientId": 79, "quantity": 2 },
-
-  /* Frozen Pies */
   { "collectionId": 14, "ingredientId": 78, "quantity": 4 },
-
-  /* Egg and Beans on Toast */
   { "collectionId": 15, "ingredientId": 27, "quantity": 8 },
   { "collectionId": 15, "ingredientId": 28, "quantity": 2 },
   { "collectionId": 15, "ingredientId": 12, "quantity": 8 },
-
-  /* Quick Veggie Stir-Fry */
   { "collectionId": 16, "ingredientId": 34, "quantity": 600 },
   { "collectionId": 16, "ingredientId": 17, "quantity": 500 },
   { "collectionId": 16, "ingredientId": 11, "quantity": 400 },
   { "collectionId": 16, "ingredientId": 49, "quantity": 40 },
-
-  /* Cheese Toasties */
   { "collectionId": 17, "ingredientId": 12, "quantity": 8 },
   { "collectionId": 17, "ingredientId": 72, "quantity": 200 }
 ]
