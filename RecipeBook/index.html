@@ -5,12 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recipe Book</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <header>
     <h1>Recipe Book</h1>
   </header>
-
+  <header>
+    <h1>Recipe Book</h1>
+    <div class="toolbar">
+      <button id="refresh-btn" title="Refresh Recipe Book from stored copy">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      <button id="save-btn" title="Save this Recipe Book over the stored copy">
+        <i class="fas fa-save"></i>
+      </button>
+    </div>
+  </header>
   <main>
     <section id="status">
       <p>Loading data...</p>
