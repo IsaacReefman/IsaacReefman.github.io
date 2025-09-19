@@ -4,33 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recipe Book</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  styles.css
+  <!-- Font Awesome for icons -->
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 </head>
 <body>
   <header>
     <h1>Recipe Book</h1>
-    <div class="toolbar">
-      <button id="refresh-btn" title="Refresh Recipe Book from stored copy">
-        <i class="fas fa-sync-alt"></i>
-      </button>
-      <button id="save-btn" title="Save this Recipe Book over the stored copy">
-        <i class="fas fa-save"></i>
+    <!-- Menu toggle (JS will handle expand/collapse) -->
+    <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- Sidebar menu (starts hidden; JS will toggle) -->
+  <aside id="sidebar" class="sidebar" hidden aria-hidden="true">
+    <nav aria-label="Main">
+      <ul class="menu-list">
+        <!-- Optional: link back to Suggestions view -->
+        <li>
+          <button class="menu-item" data-view="suggestions">
+            <i class="fas fa-lightbulb"></i><span>Suggestions</span>
+          </button>
+        </li>
+
+        <li>
+          <button class="menu-item" data-view="recipes">
+            <i class="fas fa-book"></i><span>Recipes</span>
+          </button>
+        </li>
+        <li>
+          <button class="menu-item" data-view="schedule">
+            <i class="fas fa-calendar-days"></i><span>Schedule</span>
+          </button>
+        </li>
+        <li>
+          <button class="menu-item" data-view="pantry">
+            <i class="fas fa-basket-shopping"></i><span>Pantry</span>
+          </button>
+        </li>
+
+        <li class="menu-sep" role="separator"></li>
+
+        <!-- Keep same IDs so existing JS hooks still work -->
+        <li>
+          <button id="refresh-btn" class="menu-item" title="Refresh Recipe Book from stored copy">
+            <i class="fas fa-sync-alt"></i><span>Refresh</span>
+          </button>
+        </li>
+        <li>
+          <button id="save-btn" class="menu-item" title="Save this Recipe Book over the stored copy">
+            <i class="fas fa-save"></i><span>Save</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- SUGGESTIONS view (visible by default) -->
+    <div id="suggestions">
+      <section id="status">
+        <p>Loading data...</p>
+      </section>
+
+      <section id="content" style="display:none;">
+        <ul id="recipe-list"></ul>
+      </section>
+
+      <button id="alt-btn" title="Show two random meals not on today's schedule">
+        Not feeling it. What else could I try?
       </button>
     </div>
-  </header>
-  <main>
-    <section id="status">
-      <p>Loading data...</p>
+
+    <!-- Other views (hidden by default) -->
+    <section id="recipes" style="display:none;">
+      <h2>Recipes</h2>
+      <div id="recipes-content"></div>
     </section>
 
-    <section id="content" style="display:none;">
-      <ul id="recipe-list"></ul>
+    <section id="schedule" style="display:none;">
+      <h2>Schedule</h2>
+      <div id="schedule-content"></div>
     </section>
-    <button id="alt-btn" title="Show two random meals not on today's schedule">Not feeling it. What else could I try?</button>
+
+    <section id="pantry" style="display:none;">
+      <h2>Pantry</h2>
+      <div id="pantry-content"></div>
+    </section>
   </main>
 
-  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-  <script src="script.js"></script>
+  https://unpkg.com/dexie/dist/dexie.js</script>
+  script.js</script>
 </body>
 </html>
