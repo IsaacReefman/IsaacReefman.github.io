@@ -3,36 +3,39 @@
 // Initialise Dexie DB
 const db = new Dexie("RecipeBookDB");
 db.version(1).stores({
-  ingredient: "id, description, type, unit, storage",
-  collection: "id, description, type, methodBasic, methodDetailed",
-  quantity: "++id, collectionId, ingredientId, quantity"
+  ingredients: "id, description, type, unit, storage",
+  collections: "id, description, type, methodBasic, methodDetailed",
+  quantities: "++id, collectionId, ingredientId, quantity"
 });
 
-// Helper: fetch JSON from /RecipeBook/data/
+// Helper: fetch JSON from /RecipeBook/data/ with cache-busting
 async function fetchJSON(filename) {
-  const res = await fetch(`./data/${filename}`);
-  if (!res.ok) throw new Error(`Failed to load ${filename}`);
+  const cacheBuster = `?t=${Date.now()}`;
+  const res = await fetch(`./data/${filename}${cacheBuster}`, {
+    cache: "no-store"
+  });
+  if (!res.ok) throw new Error(`Failed to load ${filename} (HTTP ${res.status})`);
   return res.json();
 }
 
 // Seed DB if empty
 async function seedDatabase() {
-  const ingredientCount = await db.ingredient.count();
-  const collectionCount = await db.collection.count();
-  const quantityCount = await db.quantity.count();
+  const ingredientCount = await db.ingredients.count();
+  const collectionCount = await db.collections.count();
+  const quantityCount = await db.quantities.count();
 
   if (ingredientCount === 0 && collectionCount === 0 && quantityCount === 0) {
     console.log("Seeding database from JSON files...");
 
-    const [ingredient, collection, quantity] = await Promise.all([
+    const [ingredients, collections, quantities] = await Promise.all([
       fetchJSON("ingredient.json"),
       fetchJSON("collection.json"),
       fetchJSON("quantity.json")
     ]);
 
-    await db.ingredient.bulkAdd(ingredient);
-    await db.collection.bulkAdd(collection);
-    await db.quantity.bulkAdd(quantity);
+    await db.ingredients.bulkAdd(ingredients);
+    await db.collections.bulkAdd(collections);
+    await db.quantities.bulkAdd(quantities);
 
     console.log("Database seeded successfully.");
   } else {
@@ -42,7 +45,7 @@ async function seedDatabase() {
 
 // Render recipe list
 async function renderRecipes() {
-  const recipes = await db.collection
+  const recipes = await db.collections
     .where("type")
     .anyOf("recipe", "ready-meal")
     .toArray();
