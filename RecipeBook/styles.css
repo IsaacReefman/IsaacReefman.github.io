@@ -1,3 +1,10 @@
+/* ========== Base & Header (yours, kept) ========== */
+:root {
+  --brand: #4a7a4c;
+  --brand-hover: #2f4f30;
+  --brand-contrast: #fff;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -8,25 +15,121 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #4a7a4c;
-  color: white;
+  background: var(--brand);
+  color: var(--brand-contrast);
   padding: 0.5rem 1rem;
 }
 
 .toolbar button {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--brand-contrast);
   font-size: 1.4rem;
   margin-left: 0.5rem;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.toolbar button:hover {
+.toolbar button:hover,
+.toolbar button:focus-visible {
   color: #d4ffd6;
 }
 
 main {
   padding: 1rem;
+}
+
+/* ========== Feed (conversational text) ========== */
+#feed {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+#feed p {
+  margin: 0;
+}
+
+/* ========== Recipe list & clickable buttons ========== */
+#recipe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#recipe-list li {
+  margin: 0.4rem 0;
+}
+
+.recipe-link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--brand);
+  text-decoration: underline;
+  font: inherit;            /* match surrounding text */
+  cursor: pointer;
+}
+.recipe-link:hover {
+  color: var(--brand-hover);
+  text-decoration: none;
+}
+.recipe-link:focus-visible,
+#panel-close:focus-visible {
+  outline: 2px solid #94d49b;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========== Floating panel (overlay) ========== */
+#recipe-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+#recipe-panel[hidden] {
+  display: none;
+}
+
+.rb-panel {
+  background: #fff;
+  color: #222;
+  width: min(92vw, 640px);
+  max-height: 80vh;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+#panel-close {
+  float: right;
+  background: transparent;
+  border: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+.rb-panel h2 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.25rem;
+}
+.rb-panel h3 {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.05rem;
+}
+.rb-panel ul {
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+/* ========== Small screens ========== */
+@media (max-width: 480px) {
+  header { padding: 0.5rem 0.75rem; }
+  main { padding: 0.75rem; }
+  .rb-panel { width: 95vw; padding: 0.75rem 0.9rem; }
 }
