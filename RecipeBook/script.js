@@ -18,11 +18,12 @@ async function fetchJSON(filename) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const statusEl = document.getElementById("status");
+  console.log("RecipeBook script loaded v4");
+  const statusEl  = document.getElementById("status");
   const contentEl = document.getElementById("content");
-  const listEl = document.getElementById("recipe-list");
+  const listEl    = document.getElementById("recipe-list");
 
-  // === NEW: UI helpers for feed + panel ===
+  // === UI helpers for feed + panel (no inline styles; style in CSS) ===
   const feedEl = ensureFeed();
   const { panelEl, panelBodyEl } = ensurePanel();
 
@@ -68,12 +69,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     return {
       panelEl: panel,
-      panelBodyEl: panel.querySelector("#panel-body")
+      panelBodyEl: panel.querySelector("#panel-body"),
     };
   }
 
   async function openRecipePanel(collectionId) {
     const recipe = await db.collections.get(collectionId);
+    if (!recipe) return;
+
     const qs = await db.quantities.where("collectionId").equals(collectionId).toArray();
     const ingIds = [...new Set(qs.map(q => q.ingredientId))];
     const ings = await db.ingredients.bulkGet(ingIds);
@@ -82,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const ing = ings.find(i => i?.id === q.ingredientId);
       const unit = ing?.unit ? ` ${ing.unit}` : "";
       const name = ing?.description ?? "Unknown ingredient";
-      const qty = q.quantity ?? "";
+      const qty  = q.quantity ?? "";
       return `<li>${qty}${unit} ${name}</li>`;
     }).join("");
 
@@ -140,14 +143,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       db.collections.get(todaySchedule.lessEasyId)
     ]);
 
-    showMessage(`Today, you could make <strong>${easy.description}</strong> or <strong>${lessEasy.description}</strong>.`);
+    // Make the two options clickable (buttons styled as links)
+    showMessage(
+      `Today, you could make ` +
+      `<button type="button" class="recipe-link" data-recipe-id="${easy.id}">${easy.description}</button>` +
+      ` or ` +
+      `<button type="button" class="recipe-link" data-recipe-id="${lessEasy.id}">${lessEasy.description}</button>.`
+    );
   }
 
   async function renderRecipes() {
-    const recipes = await db.collections.where("type").anyOf("recipe","ready-meal").toArray();
+    const recipes = await db.collections
+      .where("type")
+      .anyOf("recipe","ready-meal")
+      .toArray();
+
     showList();
     listEl.innerHTML = recipes
-      .map(r => `<li>#${r.description}</a></li>`)
+      .map(r => `<li><button type="button" class="recipe-link" data-recipe-id="${r.id}">${r.description}</button></li>`)
       .join("");
   }
 
@@ -186,7 +199,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         ? allMeals.filter(m => m.id !== todaySchedule.easyId && m.id !== todaySchedule.lessEasyId)
         : allMeals;
       const picks = filtered.sort(() => 0.5 - Math.random()).slice(0, 2);
-      showMessage(`How about <strong>${picks[0].description}</strong> or <strong>${picks[1].description}</strong>?`);
+
+      showMessage(
+        `How about ` +
+        `<button type="button" class="recipe-link" data-recipe-id="${picks[0].id}">${picks[0].description}</button>` +
+        ` or ` +
+        `<button type="button" class="recipe-link" data-recipe-id="${picks[1].id}">${picks[1].description}</button>?`
+      );
+
       document.getElementById("alt-btn").textContent =
         "You suck at this. Tell me everything you know how to cook.";
       showingAlt = true;
@@ -198,11 +218,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // Delegate clicks for recipe links
-  listEl.addEventListener("click", (e) => {
-    const a = e.target.closest('a[data-id]');
-    if (!a) return;
+  // Single delegated listener for all recipe picks (list + message)
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest('.recipe-link[data-recipe-id]');
+    if (!btn) return;
     e.preventDefault();
-    openRecipePanel(Number(a.dataset.id));
+    const id = Number(btn.dataset.recipeId);
+    if (!Number.isNaN(id)) openRecipePanel(id);
   });
 });
