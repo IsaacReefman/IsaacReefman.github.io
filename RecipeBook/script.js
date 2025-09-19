@@ -73,4 +73,17 @@ async function renderRecipes() {
     document.getElementById("status").innerHTML =
       `<p style="color:red;">Error: ${err.message}</p>`;
   }
+
+  document.getElementById("refresh-btn").addEventListener("click", async () => {
+  console.log("Refreshing from stored copy...");
+  // Clear DB and reseed from JSON
+  await db.delete();
+  location.reload();
+});
+
+document.getElementById("save-btn").addEventListener("click", async () => {
+  console.log("Saving current Recipe Book over stored copy...");
+  // TODO: Implement GitHub API push here
+  alert("Save functionality not yet implemented.");
+});
 })();
