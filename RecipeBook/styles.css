@@ -133,3 +133,93 @@ main {
   main { padding: 0.75rem; }
   .rb-panel { width: 95vw; padding: 0.75rem 0.9rem; }
 }
+/* ===== Sidebar & Menu ===== */
+.menu-toggle {
+  background: transparent;
+  border: 0;
+  color: var(--brand-contrast);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+#sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;              /* left drawer */
+  width: 260px;
+  max-width: 85vw;
+  background: #fff;
+  border-right: 1px solid #e6e6e6;
+  box-shadow: 2px 0 16px rgba(0,0,0,.12);
+  z-index: 1100;
+  padding: .5rem 0;
+}
+#sidebar[hidden] { display: none; }
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu-sep {
+  margin: .5rem 0;
+  border-top: 1px solid #ededed;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  background: none;
+  border: 0;
+  text-align: left;
+  padding: .6rem 1rem;
+  font: inherit;
+  color: #1f2a1f;
+  cursor: pointer;
+}
+.menu-item i { color: var(--brand); min-width: 1.1rem; text-align: center; }
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  background: rgba(74, 122, 76, .08); /* brand tint */
+}
+
+.menu-item[aria-current="page"] {
+  background: rgba(74, 122, 76, .12);
+  color: var(--brand-hover);
+  font-weight: 600;
+}
+
+/* Improve focus visibility (keyboard users) */
+.menu-item:focus-visible,
+.menu-toggle:focus-visible,
+.recipe-link:focus-visible,
+#panel-close:focus-visible {
+  outline: 2px solid #94d49b;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Main content shouldn’t slide under the drawer on small screens */
+@media (max-width: 768px) {
+  main { position: relative; z-index: 0; }
+}
+
+/* Optional: consistent spacing for the views */
+#suggestions,
+#recipes,
+#schedule,
+#pantry {
+  display: block;           /* JS toggles to 'none' for hidden views */
+  padding-block: .25rem;
+}
+#recipes h2, #schedule h2, #pantry h2 {
+  margin: 0 0 .75rem;
+  color: var(--brand-hover);
+}
+
+/* Respect reduced motion (in case we add transitions later) */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
