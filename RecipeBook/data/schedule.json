@@ -1,0 +1,9 @@
+[
+  { "day": "Monday",    "easyId": 3,  "lessEasyId": 4 },
+  { "day": "Tuesday",   "easyId": 8,  "lessEasyId": 5 },
+  { "day": "Wednesday", "easyId": 9,  "lessEasyId": 6 },
+  { "day": "Thursday",  "easyId": 13, "lessEasyId": 7 },
+  { "day": "Friday",    "easyId": 10, "lessEasyId": 11 },
+  { "day": "Saturday",  "easyId": 14, "lessEasyId": 12 },
+  { "day": "Sunday",    "easyId": 15, "lessEasyId": 16 }
+]
