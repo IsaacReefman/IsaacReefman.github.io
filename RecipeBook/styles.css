@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4a7a4c;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.toolbar button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.toolbar button:hover {
+  color: #d4ffd6;
+}
+
+main {
+  padding: 1rem;
+}
