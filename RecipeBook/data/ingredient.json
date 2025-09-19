@@ -88,9 +88,9 @@
   { "id": 87, "description": "curry paste jars", "type": "flavour", "storage": "pantry" },
   { "id": 88, "description": "coconut milk tins", "type": "function", "unit": "millilitres", "storage": "pantry" },
   { "id": 89, "description": "lemons", "type": "flavour", "storage": "fridge" },
-  { "id": 90, "description": "limes", "type": "flavour", "storage": "fridge" }
-  { "id": 91, "description": "chorizo", "type": "protein", "storage": "fridge" }
-  { "id": 92, "description": "tuna, tinned (large)", "type": "protein", "storage": "pantry" }
-  { "id": 93, "description": "butter chicken sauce jar", "type": "function", "storage": "pantry" }
+  { "id": 90, "description": "limes", "type": "flavour", "storage": "fridge" },
+  { "id": 91, "description": "chorizo", "type": "protein", "storage": "fridge" },
+  { "id": 92, "description": "tuna, tinned (large)", "type": "protein", "storage": "pantry" },
+  { "id": 93, "description": "butter chicken sauce jar", "type": "function", "storage": "pantry" },
   { "id": 94, "description": "wok noodles", "type": "base", "unit": "grams", "storage": "fridge" }
 ]
