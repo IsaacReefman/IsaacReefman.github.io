@@ -1,8 +1,8 @@
 // /RecipeBook/script.js
 
-// Initialise Dexie DB
+// Initialise Dexie DB — bumped version to 2 to force rebuild
 const db = new Dexie("RecipeBookDB");
-db.version(1).stores({
+db.version(2).stores({
   ingredients: "id, description, type, unit, storage",
   collections: "id, description, type, methodBasic, methodDetailed",
   quantities: "++id, collectionId, ingredientId, quantity",
@@ -26,10 +26,15 @@ async function seedDatabase() {
   const quantityCount = await db.quantities.count();
   const scheduleCount = await db.schedule.count();
 
-  if (ingredientCount === 0 && collectionCount === 0 && quantityCount === 0 && scheduleCount === 0) {
+  if (
+    ingredientCount === 0 &&
+    collectionCount === 0 &&
+    quantityCount === 0 &&
+    scheduleCount === 0
+  ) {
     console.log("Seeding database from JSON files...");
 
-    const [ingredients, collections, quantities, schedule] = await Promise.all([
+    const [ingredients, collections, quantities, scheduleData] = await Promise.all([
       fetchJSON("ingredient.json"),
       fetchJSON("collection.json"),
       fetchJSON("quantity.json"),
@@ -39,7 +44,7 @@ async function seedDatabase() {
     await db.ingredients.bulkAdd(ingredients);
     await db.collections.bulkAdd(collections);
     await db.quantities.bulkAdd(quantities);
-    await db.schedule.bulkAdd(schedule);
+    await db.schedule.bulkAdd(scheduleData);
 
     console.log("Database seeded successfully.");
   } else {
@@ -65,7 +70,7 @@ async function renderToday() {
   listEl.innerHTML = `<li>Today, you should make <strong>${easy.description}</strong> or <strong>${lessEasy.description}</strong> for dinner.</li>`;
 }
 
-// Render recipe list
+// Render full recipe list
 async function renderRecipes() {
   const recipes = await db.collections
     .where("type")
@@ -73,13 +78,7 @@ async function renderRecipes() {
     .toArray();
 
   const listEl = document.getElementById("recipe-list");
-  listEl.innerHTML = "";
-
-  recipes.forEach(recipe => {
-    const li = document.createElement("li");
-    li.textContent = recipe.description;
-    listEl.appendChild(li);
-  });
+  listEl.innerHTML = recipes.map(r => `<li>${r.description}</li>`).join("");
 
   document.getElementById("status").style.display = "none";
   document.getElementById("content").style.display = "block";
@@ -96,46 +95,50 @@ document.addEventListener("DOMContentLoaded", async () => {
       `<p style="color:red;">Error: ${err.message}</p>`;
   }
 
-  // Now the buttons definitely exist
+  // Refresh button
   document.getElementById("refresh-btn").addEventListener("click", async () => {
     console.log("Refreshing from stored copy...");
     await db.delete();
     location.reload();
   });
 
+  // Save button (placeholder)
   document.getElementById("save-btn").addEventListener("click", async () => {
     console.log("Saving current Recipe Book over stored copy...");
     alert("Save functionality not yet implemented.");
   });
 
+  // Alt / full list toggle
   let showingAlt = false;
-
   document.getElementById("alt-btn").addEventListener("click", async () => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const todayName = days[new Date().getDay()];
     const todaySchedule = await db.schedule.get({ day: todayName });
-  
+
     const allMeals = await db.collections
       .where("type")
       .anyOf("recipe", "ready-meal")
       .toArray();
-  
+
     if (!showingAlt) {
       // Filter out today's meals
-      const filtered = allMeals.filter(m => m.id !== todaySchedule.easyId && m.id !== todaySchedule.lessEasyId);
+      const filtered = allMeals.filter(
+        m => m.id !== todaySchedule.easyId && m.id !== todaySchedule.lessEasyId
+      );
       // Pick two random
       const picks = filtered.sort(() => 0.5 - Math.random()).slice(0, 2);
-  
+
       const listEl = document.getElementById("recipe-list");
       listEl.innerHTML = `<li>How about <strong>${picks[0].description}</strong> or <strong>${picks[1].description}</strong>?</li>`;
-  
-      document.getElementById("alt-btn").textContent = "You suck at this. Tell me everything you know how to cook.";
+
+      document.getElementById("alt-btn").textContent =
+        "You suck at this. Tell me everything you know how to cook.";
       showingAlt = true;
     } else {
       // Show full list
-      const listEl = document.getElementById("recipe-list");
-      listEl.innerHTML = allMeals.map(m => `<li>${m.description}</li>`).join("");
-      document.getElementById("alt-btn").textContent = "Not feeling it. What else could I try?";
+      await renderRecipes();
+      document.getElementById("alt-btn").textContent =
+        "Not feeling it. What else could I try?";
       showingAlt = false;
     }
   });
