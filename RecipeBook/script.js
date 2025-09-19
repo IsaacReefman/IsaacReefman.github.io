@@ -23,6 +23,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const contentEl = document.getElementById("content");
   const listEl    = document.getElementById("recipe-list");
 
+  // Sidebar/menu elements
+  const menuToggleEl = document.getElementById("menu-toggle");
+  const sidebarEl    = document.getElementById("sidebar");
+  const VIEWS = ["suggestions", "recipes", "schedule", "pantry"];
+
   // === UI helpers for feed + panel (no inline styles; style in CSS) ===
   const feedEl = ensureFeed();
   const { panelEl, panelBodyEl } = ensurePanel();
@@ -92,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       base: "base", carb: "base", carbs: "base", starch: "base",
       veg: "veg", veggie: "veg", veggies: "veg", vegetable: "veg", vegetables: "veg",
       flavour: "flavour", flavor: "flavour",
-      function: "function", sauce: "sauce" // keep fallback behavior if you add "sauce" types later
+      function: "function", sauce: "sauce"
     };
     return map[n] ?? n;
   }
@@ -121,7 +126,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       return `<li>${qty}${unit} ${name}</li>`;
     }).join("");
 
-    // === NEW: substitute placeholders in method using first matching ingredient by type
     const typeLookup = buildTypeLookup(qs, ings);
     const methodRaw = recipe.methodDetailed ?? recipe.methodBasic ?? "";
     const methodResolved = resolvePlaceholders(methodRaw, typeLookup);
@@ -209,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (contentEl) contentEl.style.display = "block";
   }
 
-  // === Event listeners ===
+  // === Event listeners (existing) ===
   document.getElementById("refresh-btn")?.addEventListener("click", async () => {
     await db.delete();
     location.reload();
@@ -259,4 +263,66 @@ document.addEventListener("DOMContentLoaded", async () => {
     const id = Number(btn.dataset.recipeId);
     if (!Number.isNaN(id)) openRecipePanel(id);
   });
+
+  // === NEW: Sidebar toggle & view switching ===
+  function toggleSidebar(force) {
+    if (!sidebarEl || !menuToggleEl) return;
+    const wantOpen = typeof force === "boolean" ? force : sidebarEl.hidden; // toggle if no force
+    sidebarEl.hidden = !wantOpen;
+    sidebarEl.setAttribute("aria-hidden", String(!wantOpen));
+    menuToggleEl.setAttribute("aria-expanded", String(wantOpen));
+  }
+
+  function setActiveMenuItem(viewId) {
+    sidebarEl?.querySelectorAll(".menu-item[data-view]").forEach(btn => {
+      if (btn.dataset.view === viewId) btn.setAttribute("aria-current", "page");
+      else btn.removeAttribute("aria-current");
+    });
+  }
+
+  function showView(viewId) {
+    VIEWS.forEach(v => {
+      const el = document.getElementById(v);
+      if (!el) return;
+      el.style.display = (v === viewId) ? "" : "none"; // default display for block-levels
+    });
+    setActiveMenuItem(viewId);
+    localStorage.setItem("rb.currentView", viewId);
+    // Optional: trigger renders when switching
+    if (viewId === "suggestions") {
+      // Already rendered on load
+    }
+    // Future: populate other views when ready
+  }
+
+  // Menu toggle click
+  menuToggleEl?.addEventListener("click", () => toggleSidebar());
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!sidebarEl || sidebarEl.hidden) return;
+    const clickedInsideSidebar = sidebarEl.contains(e.target);
+    const clickedToggle = menuToggleEl.contains(e.target);
+    if (!clickedInsideSidebar && !clickedToggle) toggleSidebar(false);
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") toggleSidebar(false);
+  });
+
+  // Handle menu item clicks (Suggestions/Recipes/Schedule/Pantry)
+  sidebarEl?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".menu-item");
+    if (!btn) return;
+    const view = btn.dataset.view;
+    if (view && VIEWS.includes(view)) {
+      showView(view);
+      toggleSidebar(false);
+    }
+  });
+
+  // Initial view
+  const initialView = localStorage.getItem("rb.currentView") || "suggestions";
+  showView(initialView);
 });
