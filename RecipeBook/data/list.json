@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pantry",
+    "label": "Pantry",
+    "type": "list",
+    "items": []
+  },
+  {
+    "id": "shopping-list",
+    "label": "Shopping List",
+    "type": "list",
+    "items": []
+  }
+]
