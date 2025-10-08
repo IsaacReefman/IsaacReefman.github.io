@@ -7,7 +7,21 @@
       {
         "type": "quick",
         "methodBasic": "Cook <protein> in a pan, add pasta sauce, serve with cooked <carb>.",
-        "methodDetailed": "Brown the <protein> in a large pan over medium heat. Stir in the pasta sauce and simmer for 10 minutes. Meanwhile, cook the <carb> in boiling salted water until al dente. Drain and serve topped with the sauce."
+        "methodDetailed": "Brown the <protein> in a large pan over medium heat. Stir in the pasta sauce and simmer for 10 minutes. Meanwhile, cook the <carb> in boiling salted water until al dente. Drain and serve topped with the sauce.",
+        "ingredients": [
+          {
+            "id": 16,
+            "amount": 500
+          },
+          {
+            "id": 9,
+            "amount": 400
+          },
+          {
+            "id": 35,
+            "amount": 1
+          }
+        ]
       }
     ]
   },
@@ -18,7 +32,26 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein> and <carb>, mix with sauce, top with cheese, bake until golden."
+        "methodBasic": "Cook <protein> and <carb>, mix with sauce, top with cheese, bake until golden.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 91,
+            "amount": 400
+          },
+          {
+            "id": 10,
+            "amount": 400
+          },
+          {
+            "id": 35,
+            "amount": 1
+          },
+          {
+            "id": 72,
+            "amount": 200
+          }
+        ]
       }
     ]
   },
@@ -29,7 +62,26 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Mix <protein> with cooked <carb> and creamy sauce, bake until bubbling."
+        "methodBasic": "Mix <protein> with cooked <carb> and creamy sauce, bake until bubbling.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 92,
+            "amount": 2
+          },
+          {
+            "id": 10,
+            "amount": 400
+          },
+          {
+            "id": 75,
+            "amount": 500
+          },
+          {
+            "id": 72,
+            "amount": 200
+          }
+        ]
       }
     ]
   },
@@ -40,7 +92,30 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein> with beans, tomatoes, and spices. Serve with <carb>."
+        "methodBasic": "Cook <protein> with beans, tomatoes, and spices. Serve with <carb>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 16,
+            "amount": 500
+          },
+          {
+            "id": 28,
+            "amount": 2
+          },
+          {
+            "id": 37,
+            "amount": 2
+          },
+          {
+            "id": 46,
+            "amount": 20
+          },
+          {
+            "id": 11,
+            "amount": 400
+          }
+        ]
       }
     ]
   },
@@ -51,7 +126,30 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein> and assorted <veg>. Serve over <carb> with sauce and fried egg."
+        "methodBasic": "Cook <protein> and assorted <veg>. Serve over <carb> with sauce and fried egg.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 17,
+            "amount": 500
+          },
+          {
+            "id": 11,
+            "amount": 400
+          },
+          {
+            "id": 40,
+            "amount": 200
+          },
+          {
+            "id": 43,
+            "amount": 200
+          },
+          {
+            "id": 27,
+            "amount": 4
+          }
+        ]
       }
     ]
   },
@@ -62,7 +160,22 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein>, add butter chicken sauce, simmer, serve with <carb>."
+        "methodBasic": "Cook <protein>, add butter chicken sauce, simmer, serve with <carb>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 17,
+            "amount": 500
+          },
+          {
+            "id": 93,
+            "amount": 1
+          },
+          {
+            "id": 11,
+            "amount": 400
+          }
+        ]
       }
     ]
   },
@@ -73,7 +186,26 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein>, add honey mustard sauce, serve with <carb>."
+        "methodBasic": "Cook <protein>, add honey mustard sauce, serve with <carb>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 17,
+            "amount": 500
+          },
+          {
+            "id": 70,
+            "amount": 60
+          },
+          {
+            "id": 53,
+            "amount": 60
+          },
+          {
+            "id": 11,
+            "amount": 400
+          }
+        ]
       }
     ]
   },
@@ -84,18 +216,52 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein>, add honey soy sauce, toss with <carb>."
+        "methodBasic": "Cook <protein>, add honey soy sauce, toss with <carb>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 17,
+            "amount": 500
+          },
+          {
+            "id": 70,
+            "amount": 60
+          },
+          {
+            "id": 49,
+            "amount": 60
+          },
+          {
+            "id": 94,
+            "amount": 400
+          }
+        ]
       }
     ]
   },
   {
-    "id": "shepherd-s-pie",
+    "id": "shepherds-pie",
     "description": "Shepherd's Pie",
     "default": "quick",
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein> with veg, top with mashed <carb>, bake until golden."
+        "methodBasic": "Cook <protein> with veg, top with mashed <carb>, bake until golden.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 16,
+            "amount": 500
+          },
+          {
+            "id": 31,
+            "amount": 400
+          },
+          {
+            "id": 7,
+            "amount": 1000
+          }
+        ]
       }
     ]
   },
@@ -106,7 +272,22 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook <protein>, serve with mashed <carb> and steamed <veg>."
+        "methodBasic": "Cook <protein>, serve with mashed <carb> and steamed <veg>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 23,
+            "amount": 800
+          },
+          {
+            "id": 7,
+            "amount": 1000
+          },
+          {
+            "id": 41,
+            "amount": 400
+          }
+        ]
       }
     ]
   },
@@ -117,7 +298,14 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Fuck it. You've had a rough day. This'll do."
+        "methodBasic": "Fuck it. You've had a rough day. This'll do.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 79,
+            "amount": 2
+          }
+        ]
       }
     ]
   },
@@ -128,7 +316,14 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Yeah, I hear you \u2013 let's just get the kids fed and in bed."
+        "methodBasic": "Yeah, I hear you \u2013 let's just get the kids fed and in bed.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 78,
+            "amount": 4
+          }
+        ]
       }
     ]
   },
@@ -139,7 +334,22 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Cook eggs and heat beans, serve over toast. It's not rocket science. Maybe ask ppl if they want their eggs fried or scrambled."
+        "methodBasic": "Cook eggs and heat beans, serve over toast. It's not rocket science. Maybe ask ppl if they want their eggs fried or scrambled.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 27,
+            "amount": 8
+          },
+          {
+            "id": 28,
+            "amount": 2
+          },
+          {
+            "id": 12,
+            "amount": 8
+          }
+        ]
       }
     ]
   },
@@ -150,7 +360,26 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Stir-fry <veg> with sauce, add <protein> if desired, serve over <carb>."
+        "methodBasic": "Stir-fry <veg> with sauce, add <protein> if desired, serve over <carb>.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 34,
+            "amount": 600
+          },
+          {
+            "id": 17,
+            "amount": 500
+          },
+          {
+            "id": 11,
+            "amount": 400
+          },
+          {
+            "id": 49,
+            "amount": 40
+          }
+        ]
       }
     ]
   },
@@ -161,7 +390,18 @@
     "recipes": [
       {
         "type": "quick",
-        "methodBasic": "Butter bread, add cheese, toast until golden. Serve with soup if you like."
+        "methodBasic": "Butter bread, add cheese, toast until golden. Serve with soup if you like.",
+        "methodDetailed": "",
+        "ingredients": [
+          {
+            "id": 12,
+            "amount": 8
+          },
+          {
+            "id": 72,
+            "amount": 200
+          }
+        ]
       }
     ]
   }
