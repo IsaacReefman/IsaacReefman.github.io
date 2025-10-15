@@ -1,15 +1,23 @@
+:root {
+  --color-dark: #2a2e38;     /* Desaturated navy-charcoal */
+  --color-light: #d8b56a;    /* Soft gold */
+  --color-bg: #f9f9f9;
+  --color-text: #222;
+  --font-body: 'Garamond', 'Times', serif;
+  --font-size-base: 18px;
+}
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  font-size: 18px;
-  background: #f9f9f9;
-  color: #222;
+  font-size: var(--font-size-base);
+  background: var(--color-light);
+  color: var(--color-dark);
 }
 header {
-  background: #333;
-  color: white;
+  background: var(--color-dark);
+  color: var(--color-light);
   padding: 1em 0;
   text-align: center;
 }
@@ -22,14 +30,14 @@ nav {
   margin-top: 0.5em;
 }
 nav a {
-  color: white;
+  color: var(--color-light);
   text-decoration: none;
   padding: 0.2em 0.5em;
 }
 nav a:not(:last-child)::after {
   content: "|";
   margin-left: 0.5em;
-  color: #aaa;
+  color: var(--color-text);
 }
 main {
   padding: 2em 1em;
