@@ -1,10 +1,10 @@
-fetch(‘/music/header.html’)
+fetch('/music/header.html')
   .then(res => res.text())
-  .then(html => document.getElementById(‘header’).innerHtml = html);
+  .then(html => document.getElementById('header').innerHtml = html);
   
-fetch(‘/music/footer.html’)
+fetch('/music/footer.html')
   .then(res => res.text())
-  .then(html => document.getElementById(‘site-footer’).innerHtml = html);
+  .then(html => document.getElementById('site-footer').innerHtml = html);
 
 (function () {
   // ---- find base /music/ path regardless of site root or capitalization
