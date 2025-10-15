@@ -44,12 +44,14 @@ main {
   max-width: 800px;
   margin: auto;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px) {  
+  body {
+    font-size: 20px;
+  }
   nav {
-    font-size: 1em;
+    font-size: 2em;
     gap: 0.5em;
   }
-
   main {
     padding: 1.5em 1em;
   }
