@@ -1,21 +1,52 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  font-size: 18px;
+  background: #f9f9f9;
+  color: #222;
 }
-header, nav {
+header {
   background: #333;
   color: white;
-  padding: 1em;
+  padding: 1em 0;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  font-size: 1.2em;
+  margin-top: 0.5em;
 }
 nav a {
   color: white;
-  margin-right: 1em;
   text-decoration: none;
+  padding: 0.2em 0.5em;
+}
+nav a:not(:last-child)::after {
+  content: "|";
+  margin-left: 0.5em;
+  color: #aaa;
 }
 main {
-  padding: 2em;
+  padding: 2em 1em;
   max-width: 800px;
   margin: auto;
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  nav {
+    font-size: 1em;
+    gap: 0.5em;
+  }
+
+  main {
+    padding: 1.5em 1em;
+  }
 }
