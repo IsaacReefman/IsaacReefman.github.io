@@ -14,6 +14,7 @@ body {
   font-size: var(--font-size-base);
   background: var(--color-light);
   color: var(--color-dark);
+  text-color: var(--color-dark);
 }
 header {
   background: var(--color-dark);
@@ -51,6 +52,9 @@ main {
   nav {
     font-size: 2em;
     gap: 0.5em;
+  }
+  nav a {
+    font-size: 2em;
   }
   main {
     padding: 1.5em 1em;
