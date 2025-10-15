@@ -1,3 +1,5 @@
+fetch('/music/footer.html')
+
 (function () {
   // ---- find base /music/ path regardless of site root or capitalization
   function getMusicBasePath(folderName = 'music') {
