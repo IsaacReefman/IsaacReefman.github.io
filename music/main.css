@@ -3,6 +3,7 @@
   --color-light: #e6d8b4;    /* Soft gold */
   --color-bg: #f9f9f9;
   --color-text: #222;
+  --color-muted: #b0a98c; /* Soft beige-gold for secondary text */
   --font-body: 'Garamond', 'Times', serif;
   --font-size-base: 18px;
 }
@@ -54,8 +55,9 @@ main {
 
 .site-footer {
   margin-top: 2.5rem;
-  border-top: 1px solid #20232a;
-  background: #0c0d10;
+  border-top: 1px solid var(--color-dark);
+  background: var(--color-dark);
+  color: var(--color-light);
 }
 
 .footer-cta {
@@ -78,14 +80,14 @@ main {
 }
 .t-slide {
   margin: 0; padding: 1rem 1.25rem;
-  background: #121419; border-left: 3px solid var(--brand);
+  background: var(--color-dark); border-left: 3px solid var(--color-muted);
   border-radius: 8px;
   position: absolute; inset: 0;
   opacity: 0; transform: translateY(6px);
   transition: opacity .25s ease, transform .25s ease;
 }
 .t-slide.is-active { opacity: 1; transform: translateY(0); position: relative; }
-.t-slide footer { margin-top: .5rem; color: var(--muted); }
+.t-slide footer { margin-top: .5rem; color: var(--color-muted); }
 
 .t-controls {
   display: flex; align-items: center; justify-content: center; gap: .5rem;
@@ -93,17 +95,17 @@ main {
 }
 .t-prev, .t-next {
   padding: .35rem .5rem; border-radius: 8px;
-  border: 1px solid #2a2f3a; background: #151821; color: var(--text);
+  border: 1px solid var(--color-muted); background: var(--color-dark); color: var(--color-muted);
   cursor: pointer;
 }
-.t-prev:hover, .t-next:hover { border-color: #3b4352; }
+.t-prev:hover, .t-next:hover { border-color: var(--color-dark); }
 
 .t-dots { display: flex; gap: .4rem; }
 .t-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #4b5361; border: 0; cursor: pointer;
+  background: var(--color-light); border: 0; cursor: pointer;
 }
-.t-dot.is-active { background: var(--brand); }
+.t-dot.is-active { background: var(--color-muted); }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -112,15 +114,11 @@ main {
 
 @media (max-width: 600px) {  
   body {
-    font-size: 20px;
+    font-size: 18px;
   }
   nav {
-    font-size: 2.5em;
     justify-content: space-evenly;
     gap: 0.5em;
-  }
-  nav a {
-    font-size: 4em !important;
   }
   main {
     padding: 1.5em 1em;
