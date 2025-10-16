@@ -40,7 +40,7 @@ nav {
   font-size: 1.2em;
   margin-top: 0.5em;
 }
-nav a {
+nav a, nav p {
   color: var(--color-light);
   text-decoration: none;
   padding: 0.2em 0.5em;
