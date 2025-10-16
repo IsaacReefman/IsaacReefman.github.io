@@ -36,11 +36,6 @@ nav a {
   text-decoration: none;
   padding: 0.2em 0.5em;
 }
-nav a:not(:last-child)::after {
-  content: "|";
-  margin-left: 0.5em;
-  color: var(--color-text);
-}
 main {
   padding: 2em 1em;
   max-width: 800px;
