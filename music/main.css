@@ -120,7 +120,7 @@ main {
     gap: 0.5em;
   }
   nav a {
-    font-size: 4em;
+    font-size: 4em !important;
   }
   main {
     padding: 1.5em 1em;
