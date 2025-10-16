@@ -41,6 +41,9 @@ nav {
   margin-top: 0.5em;
 }
 nav a, nav p {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   color: var(--color-light);
   text-decoration: none;
   padding: 0.2em 0.5em;
