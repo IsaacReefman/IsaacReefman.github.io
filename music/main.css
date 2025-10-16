@@ -89,6 +89,7 @@ main {
   margin: 0; 
   padding: 1rem 1.25rem;
   background: var(--color-dark); 
+  color: var(--color-light);
   border-left: 3px solid var(--color-light-muted);
   border-radius: 8px;
   position: absolute; 
@@ -98,7 +99,7 @@ main {
   transition: opacity .25s ease, transform .25s ease;
 }
 .t-slide.is-active { opacity: 1; transform: translateY(0); position: relative; }
-.t-slide footer { margin-top: .5rem; color: var(--color-dark-muted); }
+.t-slide footer { margin-top: .5rem; color: var(--color-light-muted); }
 
 .t-controls {
   display: flex; 
