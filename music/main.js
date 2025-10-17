@@ -32,14 +32,25 @@ Promise.all([
   document.querySelectorAll('.audio-preview').forEach(preview => {
     const button = preview.querySelector('.preview-toggle');
     const audio = preview.querySelector('audio');
+    const playIcon = `
+      <svg viewBox="0 0 64 64" width="24" height="24" fill="currentColor" aria-hidden="true">
+        <polygon points="16,12 52,32 16,52" />
+      </svg>
+    `;
+    const pauseIcon = `
+      <svg viewBox="0 0 64 64" width="24" height="24" fill="currentColor" aria-hidden="true">
+        <rect x="16" y="12" width="10" height="40" />
+        <rect x="38" y="12" width="10" height="40" />
+      </svg>
+    `;
 
     button.addEventListener('click', () => {
       if (audio.paused) {
         audio.play();
-        button.textContent = '⏸';
+        button.innerHTML = pauseIcon;
       } else {
         audio.pause();
-        button.textContent = '▶';
+        button.innerHTML = playIcon;
       }
     });
 
