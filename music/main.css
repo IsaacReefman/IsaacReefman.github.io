@@ -10,6 +10,7 @@
   --color-link-hover: #6a8fc2;          /* Brighter hover version */
   --font-body: 'Garamond', 'Times', serif;
   --font-size-base: 18px;
+  color: var(--lolor-light);
 }
 #IRMusicLogoHero {
   max-width: 40%;
