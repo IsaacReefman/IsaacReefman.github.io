@@ -1,28 +1,53 @@
-// Add the header
-fetch('/music/header.html')
-  .then(res => res.ok ? res.text() : Promise.reject(`header.html HTTP ${res.status}`))
-  .then(html => {
-    const el = document.getElementById('header');
-    if (el) el.innerHTML = html;
-  })
-  .catch(err => console.warn('Header inject failed:', err));
+Promise.all([
+  // Add the header
+  fetch('/music/header.html')
+    .then(res => res.ok ? res.text() : Promise.reject(`header.html HTTP ${res.status}`))
+    .then(html => {
+      const el = document.getElementById('header');
+      if (el) el.innerHTML = html;
+    })
+    .catch(err => console.warn('Header inject failed:', err)),
+  
+  // Add the footer, update the year, then init the testimonial carousel
+  fetch('/music/footer.html')
+    .then(res => res.ok ? res.text() : Promise.reject(`footer.html HTTP ${res.status}`))
+    .then(html => {
+      const host = document.getElementById('site-footer');
+      if (!host) return;
+      host.innerHTML = html;
+  
+      // Update the year inside the injected footer
+      const y = host.querySelector('#year-footer');
+      if (y) y.textContent = String(new Date().getFullYear());
+  
+      // Initialize the footer carousel (works even if it's not present)
+      initFooterCarousel(host);
+    })
+    .catch(err => console.warn('Footer inject failed:', err)),
+]).then(() => {
+  // Now that all the elements are added, make it visible
+  document.getElementById('page-content').style.visibility = 'visible';
 
-// Add the footer, update the year, then init the testimonial carousel
-fetch('/music/footer.html')
-  .then(res => res.ok ? res.text() : Promise.reject(`footer.html HTTP ${res.status}`))
-  .then(html => {
-    const host = document.getElementById('site-footer');
-    if (!host) return;
-    host.innerHTML = html;
+  // Now activate the play buttons
+  document.querySelectorAll('.audio-preview').forEach(preview => {
+    const button = preview.querySelector('.preview-toggle');
+    const audio = preview.querySelector('audio');
 
-    // Update the year inside the injected footer
-    const y = host.querySelector('#year-footer');
-    if (y) y.textContent = String(new Date().getFullYear());
+    button.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        button.textContent = '⏸';
+      } else {
+        audio.pause();
+        button.textContent = '▶';
+      }
+    });
 
-    // Initialize the footer carousel (works even if it's not present)
-    initFooterCarousel(host);
-  })
-  .catch(err => console.warn('Footer inject failed:', err));
+    audio.addEventListener('ended', () => {
+      button.textContent = '▶';
+    });
+  });
+});
 
 /* ---------- Carousel initializer (no dependencies) ---------- */
 function initFooterCarousel(footerHost) {

@@ -1,18 +1,19 @@
 :root {
-  --color-light: #e6d8b4;            /* Soft gold */
-  --color-light-muted: #b0a98c;      /* Soft beige-gold for secondary text */
-  --color-light-highlight: #f0e6c2;  /* Brighter, more luminous gold */
-  --color-dark: #2a2e38;             /* Desaturated navy-charcoal */
-  --color-dark-muted: #1f2129;       /* Deeper, cooler — ideal for shadows or inactive UI */
-  --color-dark-highlight: #3c4150;   /* Slightly brighter — great for hover, borders, or accents */
-  --color-link: #4b6c9c;             /* Desaturated steel blue */
-  --color-link-hover: #6a8fc2;       /* Brighter hover version */
+  --color-light: #e6d8b4;               /* Soft gold */
+  --color-light-transparent: #e6d8b4c0; /* For overlays */
+  --color-light-muted: #b0a98c;         /* Soft beige-gold for secondary text */
+  --color-light-highlight: #f0e6c2;     /* Brighter, more luminous gold */
+  --color-dark: #2a2e38;                /* Desaturated navy-charcoal */
+  --color-dark-muted: #1f2129;          /* Deeper, cooler — ideal for shadows or inactive UI */
+  --color-dark-highlight: #3c4150;      /* Slightly brighter — great for hover, borders, or accents */
+  --color-link: #4b6c9c;                /* Desaturated steel blue */
+  --color-link-hover: #6a8fc2;          /* Brighter hover version */
   --font-body: 'Garamond', 'Times', serif;
   --font-size-base: 18px;
 }
 #IRMusicLogoHero {
   max-width: 40%;
-  height: 5em;
+  height: 7.5em;
   width: auto;
 }
 a {
@@ -27,14 +28,15 @@ body {
   padding: 0;
   line-height: 1.6;
   font-size: var(--font-size-base);
-  background: var(--color-light);
+  background: url('Keys-duotone.jpg') no-repeat center top;
+  background-size: cover;
   color: var(--color-dark);
-  text-color: var(--color-dark);
 }
 header {
-  background: var(--color-dark);
+  background: url('ViolinFront-duotone.jpg') no-repeat center 33%;
+  background-size: cover;
   color: var(--color-light);
-  padding: 1em 0;
+  padding: 1em;
   text-align: center;
 }
 nav {
@@ -42,7 +44,7 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1em;
-  font-size: 1.2em;
+  font-size: clamp(0.75em, 1.5em, 4vw);
   margin-top: 0.5em;
 }
 nav a, nav span {
@@ -71,8 +73,92 @@ main {
   border: 0;
 }
 
+.about-top {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.spaced-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  gap: 1rem; /* optional, for breathing room */
+}
+
+.spaced-row a {
+  flex-shrink: 1;
+  text-align: center;
+  min-width: 0; /* prevents overflow */
+}
+
+.service-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 2em;
+  gap: 1em;
+}
+
+.horizontal-separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-dark-highlight);
+  margin: 1rem 0; /* optional spacing */
+}
+
+.copy-text {
+  flex: 1 1 300px;
+}
+
+.audio-samples {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: .25em;
+}
+
+.audio-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.audio-preview span {
+  line-height: 1.2;
+}
+
+.audio-preview button {
+  color: var(--color-dark);
+}
+
+.preview-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-wrapper {
+  text-align: center;
+}
+
+.call-to-action {
+  text-decoration: none;
+  padding: .35em .5em;
+  background-color: var(--color-light-highlight);
+  color: var(--color-dark);
+  border: var(--color-dark-highlight) 1px solid;
+  border-radius: 8px;
+}
+
+.call-to-action:hover {
+  background-color: var(--color-light-muted);
+  color: var(--color-light-highlight);
+}
+
 .site-footer {
-  margin-top: 2.5rem;
   border-top: 1px solid var(--color-dark-accent);
   background: var(--color-dark);
   color: var(--color-light);
@@ -88,7 +174,7 @@ main {
 }
 
 /* Testimonial carousel */
-.t-carousel { padding: 1rem 0 1.25rem; }
+.t-carousel { padding: 1rem 0.6rem; }
 .t-track {
   position: relative;
   min-height: 80px;
@@ -131,11 +217,11 @@ main {
   width: 8px; 
   height: 8px; 
   border-radius: 50%;
-  background: var(--color-light); 
+  background: var(--color-light-muted); 
   border: 0; 
   cursor: pointer;
 }
-.t-dot.is-active { background: var(--color-light-muted); }
+.t-dot.is-active { background: var(--color-light); }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
