@@ -29,8 +29,7 @@ body {
   padding: 0;
   line-height: 1.6;
   font-size: var(--font-size-base);
-  background: url('Keys-duotone.jpg') no-repeat center top;
-  background-size: cover;
+  background-color: var(--color-light-muted);
   color: var(--color-dark);
 }
 header {
@@ -57,6 +56,10 @@ nav a, nav span {
   padding: 0.2em 0.5em;
 }
 main {
+  background-image: url('Keys-duotone.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   padding: 2em 1em;
   max-width: 800px;
   margin: auto;
