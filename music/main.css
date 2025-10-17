@@ -82,8 +82,9 @@ main {
 .spaced-row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0 10%;
-  gap: 1rem; /* optional, for breathing room */
+  font-size: min(1em, 4vw);
 }
 
 .spaced-row a {
@@ -235,9 +236,12 @@ main {
   }
   nav {
     justify-content: space-evenly;
-    gap: 0.5em;
+    gap: 0;
   }
   main {
     padding: 1.5em 1em;
+  }
+  .spaced-row {
+    padding: 0;
   }
 }
