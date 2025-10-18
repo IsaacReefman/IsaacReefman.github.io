@@ -90,10 +90,27 @@ main {
   font-size: min(1em, 4vw);
 }
 
-.spaced-row a {
+.even-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.even-table td {
+  border-left: 1px solid var(--color-dark);
+  line-height: 1em;
+}
+
+.even-table td:first-child {
+  border-left: none;
+}
+
+.about-top a {
   flex-shrink: 1;
   text-align: center;
   min-width: 0; /* prevents overflow */
+  color: var(--color-dark-highlight);
 }
 
 .service-content {
