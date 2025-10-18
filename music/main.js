@@ -7,7 +7,7 @@ Promise.all([
       if (el) el.innerHTML = html;
     })
     .catch(err => console.warn('Header inject failed:', err)),
-  
+
   // Add the footer, update the year, then init the testimonial carousel
   fetch('/music/footer.html')
     .then(res => res.ok ? res.text() : Promise.reject(`footer.html HTTP ${res.status}`))
@@ -15,11 +15,11 @@ Promise.all([
       const host = document.getElementById('site-footer');
       if (!host) return;
       host.innerHTML = html;
-  
+
       // Update the year inside the injected footer
       const y = host.querySelector('#year-footer');
       if (y) y.textContent = String(new Date().getFullYear());
-  
+
       // Initialize the footer carousel (works even if it's not present)
       initFooterCarousel(host);
     })
@@ -45,6 +45,16 @@ Promise.all([
     `;
 
     button.addEventListener('click', () => {
+      // Pause all other audio elements
+      document.querySelectorAll('.audio-preview audio').forEach(otherAudio => {
+        if (otherAudio !== audio) {
+          otherAudio.pause();
+          otherAudio.currentTime = 0;
+          const otherButton = otherAudio.closest('.audio-preview').querySelector('.preview-toggle');
+          if (otherButton) otherButton.innerHTML = playIcon;
+        }
+      });
+
       if (audio.paused) {
         audio.play();
         button.innerHTML = pauseIcon;
@@ -55,7 +65,7 @@ Promise.all([
     });
 
     audio.addEventListener('ended', () => {
-      button.textContent = '▶';
+      button.innerHTML = playIcon;;
     });
   });
 });
@@ -65,11 +75,11 @@ function initFooterCarousel(footerHost) {
   const root = footerHost.querySelector('.t-carousel');
   if (!root) return;
 
-  const track   = root.querySelector('.t-track');
-  const slides  = Array.from(root.querySelectorAll('.t-slide'));
+  const track = root.querySelector('.t-track');
+  const slides = Array.from(root.querySelectorAll('.t-slide'));
   const prevBtn = root.querySelector('.t-prev');
   const nextBtn = root.querySelector('.t-next');
-  const dotsWrap= root.querySelector('.t-dots');
+  const dotsWrap = root.querySelector('.t-dots');
 
   if (!slides.length) return;
 
@@ -84,9 +94,9 @@ function initFooterCarousel(footerHost) {
   let index = Math.max(slides.findIndex(s => s.classList.contains('is-active')), 0);
 
   // Autoplay from data-autoplay (ms). Respect reduced motion.
-  const autoplayMs   = parseInt(root.dataset.autoplay || '0', 10);
+  const autoplayMs = parseInt(root.dataset.autoplay || '0', 10);
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer  = null;
+  let timer = null;
   let paused = false;
 
   // Build dots
@@ -133,7 +143,7 @@ function initFooterCarousel(footerHost) {
   prevBtn?.addEventListener('click', prev);
   nextBtn?.addEventListener('click', next);
   root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
 
@@ -144,9 +154,9 @@ function initFooterCarousel(footerHost) {
       timer = setInterval(next, autoplayMs);
     }
   }
-  root.addEventListener('mouseenter', () => { paused = true;  restart(); });
+  root.addEventListener('mouseenter', () => { paused = true; restart(); });
   root.addEventListener('mouseleave', () => { paused = false; restart(); });
-  root.addEventListener('focusin',  () => { paused = true;  restart(); });
+  root.addEventListener('focusin', () => { paused = true; restart(); });
   root.addEventListener('focusout', () => { paused = false; restart(); });
   document.addEventListener('visibilitychange', () => {
     paused = document.hidden || paused;
