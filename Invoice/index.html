@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    main.css
+</head>
+<body>
+
+    <div class="toolbar no-print">
+        <button onclick="window.print()">Print / Save PDF</button>
+        <button id="btnAddItem">Add Item</button>
+        <button id="btnSave">Save Draft</button>
+    </div>
+
+    <main class="invoice">
+
+        <header class="invoice-header">
+
+            <div class="company-details">
+                <input type="text" placeholder="Business Name">
+                <input type="text" placeholder="ABN">
+                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Phone">
+            </div>
+
+            <div class="invoice-meta">
+                <label>
+                    Invoice #
+                    <input type="text" value="INV-001">
+                </label>
+
+                <label>
+                    Date
+                    <input type="date">
+                </label>
+
+                <label>
+                    Due Date
+                    <input type="date">
+                </label>
+            </div>
+
+        </header>
+
+        <section class="customer-section">
+
+            <h2>Bill To</h2>
+
+            <input type="text"
+                   placeholder="Customer Name"
+                   list="customerList">
+
+            <datalist id="customerList">
+                <!-- Populate from IndexedDB later -->
+            </datalist>
+
+            <input type="text" placeholder="Business Name">
+            <input type="text" placeholder="Email">
+
+            <textarea rows="4"
+                      placeholder="Customer Address"></textarea>
+
+        </section>
+
+        <section>
+
+            <table class="line-items">
+                <thead>
+                    <tr>
+                        <th>Qty</th>
+                        <th>Description</th>
+                        <th>Rate</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="invoiceItems">
+
+                    <tr>
+                        <td>
+                            <input type="number" value="1">
+                        </td>
+
+                        <td>
+                            <input type="text"
+                                   placeholder="Description"
+                                   list="itemSuggestions">
+                        </td>
+
+                        <td>
+                            <input type="number"
+                                   value="0"
+                                   step="0.01">
+                        </td>
+
+                        <td class="row-total">
+                            $0.00
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <datalist id="itemSuggestions">
+                <!-- Populate from IndexedDB later -->
+            </datalist>
+
+        </section>
+
+        <section class="totals">
+
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span>$0.00</span>
+            </div>
+
+            <div class="total-row">
+                <span>GST</span>
+                <span>$0.00</span>
+            </div>
+
+            <div class="total-row grand-total">
+                <span>Total</span>
+                <span>$0.00</span>
+            </div>
+
+        </section>
+
+        <section>
+
+            <h3>Notes</h3>
+
+            <textarea rows="5"
+                      placeholder="Additional notes..."></textarea>
+
+        </section>
+
+        <section>
+
+            <h3>Payment Details</h3>
+
+            <input type="text" placeholder="BSB">
+            <input type="text" placeholder="Account Number">
+            <input type="text" placeholder="Account Name">
+
+        </section>
+
+    </main>
+
+</body>
+</html>
