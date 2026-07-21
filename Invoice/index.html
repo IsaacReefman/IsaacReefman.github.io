@@ -8,147 +8,99 @@
 </head>
 <body>
 
-    <div class="toolbar no-print">
-        <button onclick="window.print()">Print / Save PDF</button>
-        <button id="btnAddItem">Add Item</button>
-        <button id="btnSave">Save Draft</button>
-    </div>
+    <div id="InvPage">
 
-    <main class="invoice">
+  <!-- ===================== -->
+  <!-- 1. My Info Section    -->
+  <!-- ===================== -->
+  <div id="MyInfo" class="section">
+    <h2>My Details</h2>
 
-        <header class="invoice-header">
+    <label>Business Name</label>
+    <input type="text" id="my_business">
 
-            <div class="company-details">
-                <input type="text" placeholder="Business Name">
-                <input type="text" placeholder="ABN">
-                <input type="text" placeholder="Email">
-                <input type="text" placeholder="Phone">
-            </div>
+    <label>ABN</label>
+    <input type="text" id="my_abn">
 
-            <div class="invoice-meta">
-                <label>
-                    Invoice #
-                    <input type="text" value="INV-001">
-                </label>
+    <label>Email</label>
+    <input type="email" id="my_email">
+  </div>
 
-                <label>
-                    Date
-                    <input type="date">
-                </label>
+  <!-- ===================== -->
+  <!-- 2. Customer Info       -->
+  <!-- ===================== -->
+  <div id="CustInfo" class="section">
+    <h2>Customer Details</h2>
 
-                <label>
-                    Due Date
-                    <input type="date">
-                </label>
-            </div>
+    <label>Customer Name</label>
+    <input type="text" id="cust_name">
 
-        </header>
+    <label>Business Name</label>
+    <input type="text" id="cust_business">
 
-        <section class="customer-section">
+    <label>Email</label>
+    <input type="email" id="cust_email">
+  </div>
 
-            <h2>Bill To</h2>
+  <!-- ===================== -->
+  <!-- 3. Line Items Table    -->
+  <!-- ===================== -->
+  <div id="LineItems" class="section">
+    <h2>Line Items</h2>
 
-            <input type="text"
-                   placeholder="Customer Name"
-                   list="customerList">
+    <table>
+      <thead>
+        <tr>
+          <th class="qty">Qty</th>
+          <th class="desc">Description</th>
+          <th class="rate">Rate</th>
+          <th class="total">Total</th>
+        </tr>
+      </thead>
 
-            <datalist id="customerList">
-                <!-- Populate from IndexedDB later -->
-            </datalist>
+      <tbody id="itemRows">
+        <tr>
+          <td><input type="number" class="qtyField"></td>
+          <td><textarea class="descField"></textarea></td>
+          <td><input type="number" class="rateField"></td>
+          <td><input type="number" class="totalField" readonly></td>
+        </tr>
+      </tbody>
 
-            <input type="text" placeholder="Business Name">
-            <input type="text" placeholder="Email">
+      <tfoot>
+        <tr>
+          <td colspan="3" class="right">Subtotal</td>
+          <td><input type="number" id="subtotal" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="right">GST</td>
+          <td><input type="number" id="gst" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="right"><strong>Total</strong></td>
+          <td><input type="number" id="grand_total" readonly></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 
-            <textarea rows="4"
-                      placeholder="Customer Address"></textarea>
+  <!-- ===================== -->
+  <!-- 4. Footer (Payment)   -->
+  <!-- ===================== -->
+  <div id="Footer">
+    <h2>Payment Details</h2>
 
-        </section>
+    <label>BSB</label>
+    <input type="text" id="bsb">
 
-        <section>
+    <label>Account Number</label>
+    <input type="text" id="acct_num">
 
-            <table class="line-items">
-                <thead>
-                    <tr>
-                        <th>Qty</th>
-                        <th>Description</th>
-                        <th>Rate</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
+    <label>Account Name</label>
+    <input type="text" id="acct_name">
+  </div>
 
-                <tbody id="invoiceItems">
-
-                    <tr>
-                        <td>
-                            <input type="number" value="1">
-                        </td>
-
-                        <td>
-                            <input type="text"
-                                   placeholder="Description"
-                                   list="itemSuggestions">
-                        </td>
-
-                        <td>
-                            <input type="number"
-                                   value="0"
-                                   step="0.01">
-                        </td>
-
-                        <td class="row-total">
-                            $0.00
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <datalist id="itemSuggestions">
-                <!-- Populate from IndexedDB later -->
-            </datalist>
-
-        </section>
-
-        <section class="totals">
-
-            <div class="total-row">
-                <span>Subtotal</span>
-                <span>$0.00</span>
-            </div>
-
-            <div class="total-row">
-                <span>GST</span>
-                <span>$0.00</span>
-            </div>
-
-            <div class="total-row grand-total">
-                <span>Total</span>
-                <span>$0.00</span>
-            </div>
-
-        </section>
-
-        <section>
-
-            <h3>Notes</h3>
-
-            <textarea rows="5"
-                      placeholder="Additional notes..."></textarea>
-
-        </section>
-
-        <section>
-
-            <h3>Payment Details</h3>
-
-            <input type="text" placeholder="BSB">
-            <input type="text" placeholder="Account Number">
-            <input type="text" placeholder="Account Name">
-
-        </section>
-
-    </main>
+</div>
 
 </body>
 </html>
