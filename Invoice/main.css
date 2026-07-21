@@ -1,130 +1,98 @@
-* {
-    box-sizing: border-box;
+/* ============================
+   A4 PAGE WRAPPER
+   ============================ */
+#InvPage {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  margin: auto;
+  background: white;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  position: relative;
 }
 
-body {
-    margin: 0;
-    padding: 20px;
-    background: #f0f2f5;
-    font-family: Arial, sans-serif;
+/* ============================
+   SECTIONS
+   ============================ */
+.section {
+  margin-bottom: 20px;
 }
 
-.toolbar {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
+.section h2 {
+  margin-bottom: 10px;
 }
 
-.toolbar button {
-    padding: 10px 16px;
-    cursor: pointer;
-}
-
-.invoice {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
-
-.invoice-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.company-details,
-.invoice-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.customer-section {
-    margin-bottom: 30px;
-}
-
-.customer-section input,
-.customer-section textarea {
-    width: 100%;
-    margin-bottom: 8px;
-}
-
+/* ============================
+   INPUTS & TEXTAREAS (SCREEN)
+   ============================ */
 input,
 textarea {
-    border: 1px solid #ccc;
-    padding: 8px;
-    font: inherit;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 4px;
+  font: inherit;
+  box-sizing: border-box;
+  margin-bottom: 8px;
 }
 
-.line-items {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
+/* Textarea should wrap but not look like a big box */
+textarea {
+  resize: none;
+  overflow: hidden;
+  min-height: 1.2em;
+  background: transparent;
 }
 
-.line-items th,
-.line-items td {
-    border: 1px solid #ddd;
-    padding: 8px;
+/* ============================
+   LINE ITEMS TABLE
+   ============================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.line-items th {
-    background: #f8f8f8;
+th,
+td {
+  padding: 4px;
+  vertical-align: top;
 }
 
-.line-items input {
-    width: 100%;
-    border: none;
+.qty   { width: 40px; }
+.rate  { width: 60px; }
+.total { width: 80px; }
+.desc  { width: auto; }
+
+.right {
+  text-align: right;
 }
 
-.totals {
-    width: 300px;
-    margin-left: auto;
-    margin-bottom: 30px;
+/* ============================
+   FOOTER PINNED TO BOTTOM
+   ============================ */
+#Footer {
+  position: absolute;
+  bottom: 20mm;
+  left: 20mm;
+  right: 20mm;
 }
 
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-}
-
-.grand-total {
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-top: 2px solid #000;
-    margin-top: 10px;
-    padding-top: 10px;
-}
-
-/* PRINTING */
-
+/* ============================
+   PRINT MODE
+   ============================ */
 @media print {
 
-    body {
-        background: white;
-        padding: 0;
-    }
+  /* Remove borders/outlines for clean printed look */
+  input,
+  textarea {
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+  }
 
-    .no-print {
-        display: none !important;
-    }
-
-    .invoice {
-        box-shadow: none;
-        max-width: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    input,
-    textarea {
-        border: none;
-        padding: 0;
-        background: transparent;
-    }
-
+  /* Footer stays pinned at bottom of printed page */
+  #Footer {
+    position: fixed;
+    bottom: 20mm;
+  }
 }
