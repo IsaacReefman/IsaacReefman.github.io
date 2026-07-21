@@ -13,34 +13,70 @@
   <!-- ===================== -->
   <!-- 1. My Info Section    -->
   <!-- ===================== -->
-  <div id="MyInfo" class="section">
-    <h2>My Details</h2>
+  <div id="MyInfo" class="section two-col">
+  <h2>My Details</h2>
 
-    <label>Business Name</label>
-    <input type="text" id="my_business">
-
-    <label>ABN</label>
-    <input type="text" id="my_abn">
-
-    <label>Email</label>
-    <input type="email" id="my_email">
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input type="text" id="my_name">
+    </div>
+    <div>
+      <label>ABN</label>
+      <input type="text" id="my_abn">
+    </div>
   </div>
 
-  <!-- ===================== -->
+  <div class="row">
+    <div>
+      <label>Email</label>
+      <input type="email" id="my_email">
+    </div>
+    <div>
+      <label>Phone</label>
+      <input type="text" id="my_phone">
+    </div>
+  </div>
+
+  <div class="row full">
+    <label>Address</label>
+    <input type="text" id="my_address">
+  </div>
+</div>
+
+<!-- ===================== -->
   <!-- 2. Customer Info       -->
   <!-- ===================== -->
-  <div id="CustInfo" class="section">
-    <h2>Customer Details</h2>
+<div id="CustInfo" class="section two-col">
+  <h2>Customer Details</h2>
 
-    <label>Customer Name</label>
-    <input type="text" id="cust_name">
-
-    <label>Business Name</label>
-    <input type="text" id="cust_business">
-
-    <label>Email</label>
-    <input type="email" id="cust_email">
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input type="text" id="cust_name">
+    </div>
+    <div>
+      <label>Company</label>
+      <input type="text" id="cust_company">
+    </div>
   </div>
+
+  <div class="row">
+    <div>
+      <label>Email</label>
+      <input type="email" id="cust_email">
+    </div>
+    <div>
+      <label>Phone</label>
+      <input type="text" id="cust_phone">
+    </div>
+  </div>
+
+  <div class="row full">
+    <label>Address</label>
+    <input type="text" id="cust_address">
+  </div>
+</div>
 
   <!-- ===================== -->
   <!-- 3. Line Items Table    -->
@@ -87,17 +123,23 @@
   <!-- ===================== -->
   <!-- 4. Footer (Payment)   -->
   <!-- ===================== -->
-  <div id="Footer">
-    <h2>Payment Details</h2>
+  <div id="Footer" class="pay-row">
+  <h2>Payment Details</h2>
 
-    <label>BSB</label>
-    <input type="text" id="bsb">
-
-    <label>Account Number</label>
-    <input type="text" id="acct_num">
-
-    <label>Account Name</label>
-    <input type="text" id="acct_name">
+  <div class="row">
+    <div>
+      <label>BSB</label>
+      <input type="text" id="bsb">
+    </div>
+    <div>
+      <label>Account Number</label>
+      <input type="text" id="acct_num">
+    </div>
+    <div>
+      <label>Account Name</label>
+      <input type="text" id="acct_name">
+    </div>
+  </div>
   </div>
 
 </div>
