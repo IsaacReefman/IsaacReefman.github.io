@@ -47,6 +47,18 @@ textarea {
 /* ============================
    LINE ITEMS TABLE
    ============================ */
+table, th, td {
+  border: 1px solid #999;
+}
+
+thead th {
+  background: #f3f3f3;
+  font-weight: bold;
+}
+
+tfoot td {
+  border-top: 2px solid #000;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -70,6 +82,15 @@ td {
 /* ============================
    FOOTER PINNED TO BOTTOM
    ============================ */
+.pay-row .row {
+  display: flex;
+  gap: 20px;
+}
+
+.pay-row .row > div {
+  flex: 1;
+}
+
 #Footer {
   position: absolute;
   bottom: 20mm;
