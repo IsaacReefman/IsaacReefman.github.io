@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+.toolbar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar button {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.invoice {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.company-details,
+.invoice-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.customer-section {
+    margin-bottom: 30px;
+}
+
+.customer-section input,
+.customer-section textarea {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    border: 1px solid #ccc;
+    padding: 8px;
+    font: inherit;
+}
+
+.line-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.line-items th,
+.line-items td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.line-items th {
+    background: #f8f8f8;
+}
+
+.line-items input {
+    width: 100%;
+    border: none;
+}
+
+.totals {
+    width: 300px;
+    margin-left: auto;
+    margin-bottom: 30px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+
+.grand-total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-top: 2px solid #000;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+/* PRINTING */
+
+@media print {
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .invoice {
+        box-shadow: none;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    input,
+    textarea {
+        border: none;
+        padding: 0;
+        background: transparent;
+    }
+
+}
