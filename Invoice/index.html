@@ -6,43 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=calendar_today,call,location_on,mail,numbers" />
 </head>
 
 <body>
-
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <symbol id="phone" viewBox="0 -960 960 960">
+            <path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12Z
+                M241-600l66-66-17-94h-89q5 41 14 81t26 79Z
+                m358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67Z
+                M241-600Z
+                m358 358Z" />
+        </symbol>
+        <symbol id="map-pin" viewBox="0 -960 960 960">
+            <path d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5Z
+                M480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Z
+                m0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z
+                m0-480Z" />
+        </symbol>
+        <symbol id="envelope" viewBox="0 -960 960 960">
+            <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Z
+                m320-280L160-640v400h640v-400L480-440Z
+                m0-80 320-200H160l320 200Z
+                M160-640v-80 480-400Z" />
+        </symbol>
+        <symbol id="numbers" viewBox="0 -960 960 960">
+            <path d="m240-160 40-160H120l20-80h160l40-160H180l20-80h160l40-160h80l-40 160h160l40-160h80l-40 160h160l-20 80H660l-40 160h160l-20 80H600l-40 160h-80l40-160H360l-40 160h-80Z
+                m140-240h160l40-160H420l-40 160Z" />
+        </symbol>
+        <symbol id="calendar" viewBox="0 -960 960 960">
+            <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Z
+                m0-480h560v-80H200v80Zm0 0v-80 80Z" />
+        </symbol>
+    </svg>
     <div id="InvPage">
         <div id="Header">
-            <!-- ===================== -->
-            <!-- 1. My Info Section    -->
-            <!-- ===================== -->
             <div id="MyInfo">
                 <input type="text" id="my_name" value="Isaac Reefman">
                 <div class="MyInfo_Grid">
-                    <label class="material-symbols-outlined" for="my_email">mail</label>
+                    <label class="material-symbols-outlined" for="my_email" aria-label="Email">
+                        <svg><use href="#envelope" /></svg>
+                    </label>
                     <input type="email" id="my_email" value="isaac.reefman@gmail.com">
-                    <label class="material-symbols-outlined" for="my_phone">call</label>
+                    <label class="material-symbols-outlined" for="my_phone" aria-label="Phone">
+                        <svg><use href="#phone" /></svg>
+                    </label>
                     <input type="text" id="my_phone" value="0431 719 879">
-                    <label class="material-symbols-outlined" for="my_street">location_on</label>
+                    <label class="material-symbols-outlined" for="my_address" aria-label="Address">
+                        <svg><use href="#map-pin" /></svg>
+                    </label>
                     <input type="text" id="my_address" value="2 Emila Rd, Stream Hill NSW 2526">
                 </div>
             </div>
             <div id="InvoiceInfo">
                 <h2>Invoice</h2>
-
                 <div class="InvoiceInfo_Grid">
-                    <label class="material-symbols-outlined" for="invoice_no">numbers</label>
+                    <label class="material-symbols-outlined" for="invoice_no" aria-label="Invoice Number">
+                        <svg><use href="#numbers" /></svg>
+                    </label>
                     <input type="text" id="invoice_no" value="260701">
-                    <label class="material-symbols-outlined" for="invoice_date">calendar_today</label>
+                    <label class="material-symbols-outlined" for="invoice_date" aria-label="Invoice Date">
+                        <svg><use href="#calendar" /></svg>
+                    </label>
                     <input type="date" id="invoice_date">
+                    <span id="invoice_date_print"></span>
                 </div>
             </div>
         </div>
-
-        <!-- ===================== -->
-        <!-- 2. Customer Info       -->
-        <!-- ===================== -->
         <div id="CustInfo" class="section two-col">
             <h2>Issued To</h2>
             <input type="text" id="cust_name" placeholder="Contact Name">
@@ -51,10 +80,6 @@
             <input type="text" id="cust_phone" placeholder="Contact Phone">
             <input type="text" id="cust_address" placeholder="Address">
         </div>
-
-        <!-- ===================== -->
-        <!-- 3. Line Items Table    -->
-        <!-- ===================== -->
         <div id="LineItems" class="section">
             <table>
                 <thead>
@@ -84,37 +109,32 @@
                     <tr>
                         <td colspan="3" class="right"><strong>Total</strong></td>
                         <td>
-                            <div class="money-input"><span>$</span><input type="number" id="grand_total" readonly></div>
+                            <div class="money-input"><span>$</span><input type="number" id="grand_total" readonly>
+                            </div>
                         </td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-
-        <!-- ===================== -->
-        <!-- 4. Footer (Payment)   -->
-        <!-- ===================== -->
         <div id="Footer">
             <h2>Payment Details</h2>
             <div class="row">
-                <label for="abn">ABN:</label>
-                <input type="text" id="abn" value="37 736 616 146">
-            </div>
-            <div class="row">
-                <label for="acct_name">Please make any checks payable to</label>
-                <input type="text" id="acct_name" value="Isaac Reefman">
-            </div>
-            <div class="row">
-                <label for="bsb">BSB:</label>
-                <input type="text" id="bsb" value="814 282">
-                <label for="acct_num">Account Number:</label>
-                <input type="text" id="acct_num" value="5183 3625">
+                <div style="flex: 3;">
+                    <label for="acct_name">Payee:</label>
+                    <input type="text" id="acct_name" value="Isaac Reefman">
+                    <label for="abn">ABN:</label>
+                    <input type="text" id="abn" value="37 736 616 146">
+                </div>
+                <div style="flex: 2;">
+                    <label for="bsb">BSB:</label>
+                    <input type="text" id="bsb" value="814 282">
+                    <label for="acct_num">Acct:</label>
+                    <input type="text" id="acct_num" value="5183 3625">
+                </div>
             </div>
         </div>
-
     </div>
-
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 
 </html>
