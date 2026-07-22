@@ -9,7 +9,6 @@
     background: white;
     box-sizing: border-box;
     font-family: sans-serif;
-    /*position: relative;*/
     display: flex;
     flex-direction: column;
 }
@@ -18,6 +17,11 @@
     display: flex;
 }
 
+label svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
 /* ============================
    My Details Section
    ============================ */
@@ -35,12 +39,6 @@
 .InvoiceInfo_Grid {
     display: grid;
     align-items: center;
-}
-
-.InvoiceInfo_Grid input {
-    min-width: 0;
-    /* prevents weird flex sizing issues */
-    text-align: right;
 }
 
 .MyInfo_Grid {
@@ -62,6 +60,16 @@
 
 .InvoiceInfo_Grid {
     grid-template-columns: 2fr 1fr;
+}
+
+.InvoiceInfo_Grid input {
+    min-width: 0;
+    /* prevents weird flex sizing issues */
+    text-align: right;
+}
+
+#invoice_date_print {
+    display: none;
 }
 
 /* ============================
@@ -90,18 +98,14 @@
 input,
 textarea {
     width: 100%;
-    border: 0;
+    border: none;
     padding: 4px;
     font: inherit;
     min-height: 1.75em;
     box-sizing: border-box;
     vertical-align: middle;
     line-height: 1.2em;
-    background-color: lightyellow;
-}
-
-.section td input,
-.section td textarea {
+    background-color: ivory;
     margin: 0;
 }
 
@@ -120,7 +124,6 @@ textarea {
 .money-input input {
     flex: 1;
     min-width: 0;
-    /* prevents weird flex sizing issues */
 }
 
 input[type="number"],
@@ -128,7 +131,6 @@ input[type="date"] {
     /* Firefox spin button removal*/
     appearance: textfield;
     -moz-appearance: textfield;
-
     text-align: right;
 }
 
@@ -181,10 +183,6 @@ td {
     padding: 0;
 }
 
-td * {
-    border: none;
-}
-
 td strong {
     padding: 4px;
 }
@@ -225,16 +223,11 @@ td span {
 /* ============================
    FOOTER PINNED TO BOTTOM
    ============================ */
-#Footer .row {
+#Footer div {
     display: flex;
     flex-direction: row;
     gap: 0;
     align-items: center;
-}
-
-
-#Footer .row>div {
-    align-items: flex-start;
 }
 
 #Footer label,
@@ -245,9 +238,6 @@ td span {
 
 #Footer {
     margin-top: auto;
-    bottom: 20mm;
-    left: 20mm;
-    right: 20mm;
 }
 
 /* ============================
@@ -261,11 +251,6 @@ td span {
         background: transparent !important;
     }
 
-    /* Remove date picker indicator */
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        display: none;
-    }
-
     /* Remove buttons */
     .addRowBtn,
     .removeRowBtn {
@@ -276,5 +261,16 @@ td span {
     input::placeholder,
     textarea::placeholder {
         color: transparent;
+    }
+
+    /* Remove date picker and replace with static text */
+    #invoice_date {
+        display: none;
+    }
+
+    #invoice_date_print {
+        display: inline-block;
+        min-width: 0;
+        text-align: right;
     }
 }
