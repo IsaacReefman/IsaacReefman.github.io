@@ -2,25 +2,86 @@
    A4 PAGE WRAPPER
    ============================ */
 #InvPage {
-  width: 210mm;
-  min-height: 297mm;
-  padding: 20mm;
-  margin: auto;
-  background: white;
-  box-sizing: border-box;
-  font-family: sans-serif;
-  position: relative;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: auto;
+    background: white;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    /*position: relative;*/
+    display: flex;
+    flex-direction: column;
+}
+
+#Header {
+    display: flex;
+}
+
+/* ============================
+   My Details Section
+   ============================ */
+#MyInfo,
+#InvoiceInfo {
+    width: 50%;
+}
+
+#my_name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.MyInfo_Grid,
+.InvoiceInfo_Grid {
+    display: grid;
+    align-items: center;
+}
+
+.InvoiceInfo_Grid input {
+    min-width: 0;
+    /* prevents weird flex sizing issues */
+    text-align: right;
+}
+
+.MyInfo_Grid {
+    grid-template-columns: 1fr 12fr;
+}
+
+.MyInfo_Grid input {
+    grid-column: 2;
+}
+
+#InvoiceInfo {
+    text-align: right;
+}
+
+#InvoiceInfo h2 {
+    margin: 0;
+    padding: 4px;
+}
+
+.InvoiceInfo_Grid {
+    grid-template-columns: 2fr 1fr;
 }
 
 /* ============================
    SECTIONS
    ============================ */
 .section {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 8px;
 }
 
 .section h2 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.section h2,
+.section table,
+.section>:last-child {
+    grid-column: 1 / -1;
 }
 
 /* ============================
@@ -28,74 +89,165 @@
    ============================ */
 input,
 textarea {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 4px;
-  font: inherit;
-  box-sizing: border-box;
-  margin-bottom: 8px;
+    width: 100%;
+    border: 0;
+    padding: 4px;
+    font: inherit;
+    min-height: 1.75em;
+    box-sizing: border-box;
+    vertical-align: middle;
+    line-height: 1.2em;
+    background-color: lightyellow;
+}
+
+.section td input,
+.section td textarea {
+    margin: 0;
 }
 
 /* Textarea should wrap but not look like a big box */
 textarea {
-  resize: none;
-  overflow: hidden;
-  min-height: 1.2em;
-  background: transparent;
+    resize: none;
+    overflow: hidden;
+}
+
+.money-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.money-input input {
+    flex: 1;
+    min-width: 0;
+    /* prevents weird flex sizing issues */
+}
+
+input[type="number"],
+input[type="date"] {
+    /* Firefox spin button removal*/
+    appearance: textfield;
+    -moz-appearance: textfield;
+
+    text-align: right;
+}
+
+/* Chrome, Edge, Safari spin button removal*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* ============================
    LINE ITEMS TABLE
    ============================ */
-table, th, td {
-  border: 1px solid #999;
+table,
+th,
+td {
+    border: 1px solid #999;
+    vertical-align: middle;
 }
 
 thead th {
-  background: #f3f3f3;
-  font-weight: bold;
+    background: #f3f3f3;
+    font-weight: bold;
 }
 
 tfoot td {
-  border-top: 2px solid #000;
+    border-top: 2px solid #000;
 }
+
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#itemRows tr {
+    position: relative;
+}
+
+.rowBtn {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
 }
 
 th,
 td {
-  padding: 4px;
-  vertical-align: top;
+    padding: 0;
 }
 
-.qty   { width: 40px; }
-.rate  { width: 60px; }
-.total { width: 80px; }
-.desc  { width: auto; }
+td * {
+    border: none;
+}
+
+td strong {
+    padding: 4px;
+}
+
+td span {
+    display: block;
+    padding: 4px 0 4px 4px;
+}
+
+.qty {
+    width: 40px;
+}
+
+.rate {
+    width: 80px;
+}
+
+.total {
+    width: 100px;
+}
+
+.desc {
+    width: auto;
+}
 
 .right {
-  text-align: right;
+    text-align: right;
+}
+
+.addRowBtn,
+.removeRowBtn {
+    margin-left: 6px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 /* ============================
    FOOTER PINNED TO BOTTOM
    ============================ */
-.pay-row .row {
-  display: flex;
-  gap: 20px;
+#Footer .row {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
 }
 
-.pay-row .row > div {
-  flex: 1;
+
+#Footer .row>div {
+    align-items: flex-start;
+}
+
+#Footer label,
+#Footer span {
+    padding: 4px 0;
+    flex-shrink: 0;
 }
 
 #Footer {
-  position: absolute;
-  bottom: 20mm;
-  left: 20mm;
-  right: 20mm;
+    margin-top: auto;
+    bottom: 20mm;
+    left: 20mm;
+    right: 20mm;
 }
 
 /* ============================
@@ -103,17 +255,26 @@ td {
    ============================ */
 @media print {
 
-  /* Remove borders/outlines for clean printed look */
-  input,
-  textarea {
-    border: none !important;
-    outline: none !important;
-    padding: 0 !important;
-  }
+    /* Remove input field indicators */
+    input,
+    textarea {
+        background: transparent !important;
+    }
 
-  /* Footer stays pinned at bottom of printed page */
-  #Footer {
-    position: fixed;
-    bottom: 20mm;
-  }
+    /* Remove date picker indicator */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    /* Remove buttons */
+    .addRowBtn,
+    .removeRowBtn {
+        display: none;
+    }
+
+    /* Hide placeholder text */
+    input::placeholder,
+    textarea::placeholder {
+        color: transparent;
+    }
 }
