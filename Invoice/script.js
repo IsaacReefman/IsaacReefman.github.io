@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Today's date for <input type="date">
     document.getElementById('invoice_date').value =
         now.toISOString().split('T')[0];
+    document.getElementById('invoice_date_print').textContent =
+        now.toLocaleDateString('en-AU');
 });
+
 function updateTotals() {
     let grandTotal = 0;
 
@@ -56,6 +59,15 @@ function updateDocumentTitle() {
 
     document.title = `Invoice ${invoiceNo} - ${customer}`;
 }
+
+function updateInvoiceDatePrint() {
+    const invoiceDate = new Date(document.getElementById('invoice_date').value);
+    document.getElementById('invoice_date_print').textContent =
+        invoiceDate.toLocaleDateString('en-AU');
+}
+
+document.getElementById('invoice_date')
+    .addEventListener('input', updateInvoiceDatePrint);
 
 document.getElementById('invoice_no')
     .addEventListener('input', updateDocumentTitle);
