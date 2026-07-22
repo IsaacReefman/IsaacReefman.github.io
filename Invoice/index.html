@@ -1,148 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Generator</title>
+    <title>Invoice</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=calendar_today,call,location_on,mail,numbers" />
 </head>
+
 <body>
 
     <div id="InvPage">
+        <div id="Header">
+            <!-- ===================== -->
+            <!-- 1. My Info Section    -->
+            <!-- ===================== -->
+            <div id="MyInfo">
+                <input type="text" id="my_name" value="Isaac Reefman">
+                <div class="MyInfo_Grid">
+                    <label class="material-symbols-outlined" for="my_email">mail</label>
+                    <input type="email" id="my_email" value="isaac.reefman@gmail.com">
+                    <label class="material-symbols-outlined" for="my_phone">call</label>
+                    <input type="text" id="my_phone" value="0431 719 879">
+                    <label class="material-symbols-outlined" for="my_street">location_on</label>
+                    <input type="text" id="my_address" value="2 Emila Rd, Stream Hill NSW 2526">
+                </div>
+            </div>
+            <div id="InvoiceInfo">
+                <h2>Invoice</h2>
 
-  <!-- ===================== -->
-  <!-- 1. My Info Section    -->
-  <!-- ===================== -->
-  <div id="MyInfo" class="section two-col">
-  <h2>My Details</h2>
+                <div class="InvoiceInfo_Grid">
+                    <label class="material-symbols-outlined" for="invoice_no">numbers</label>
+                    <input type="text" id="invoice_no" value="260701">
+                    <label class="material-symbols-outlined" for="invoice_date">calendar_today</label>
+                    <input type="date" id="invoice_date">
+                </div>
+            </div>
+        </div>
 
-  <div class="row">
-    <div>
-      <label>Name</label>
-      <input type="text" id="my_name">
+        <!-- ===================== -->
+        <!-- 2. Customer Info       -->
+        <!-- ===================== -->
+        <div id="CustInfo" class="section two-col">
+            <h2>Issued To</h2>
+            <input type="text" id="cust_name" placeholder="Contact Name">
+            <input type="text" id="cust_company" placeholder="Company Name">
+            <input type="email" id="cust_email" placeholder="Contact Email">
+            <input type="text" id="cust_phone" placeholder="Contact Phone">
+            <input type="text" id="cust_address" placeholder="Address">
+        </div>
+
+        <!-- ===================== -->
+        <!-- 3. Line Items Table    -->
+        <!-- ===================== -->
+        <div id="LineItems" class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="qty">Qty</th>
+                        <th class="desc">Description</th>
+                        <th class="rate">Rate</th>
+                        <th class="total">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="itemRows">
+                    <tr>
+                        <td><input type="number" class="qtyField" value="1"></td>
+                        <td><textarea rows="1" class="descField auto-grow" placeholder="Item Description"></textarea>
+                        </td>
+                        <td>
+                            <div class="money-input"><span>$</span><input type="number" class="rateField"
+                                    placeholder="500.00"></div>
+                        </td>
+                        <td>
+                            <div class="money-input"><span>$</span><input type="number" class="totalField" readonly>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="right"><strong>Total</strong></td>
+                        <td>
+                            <div class="money-input"><span>$</span><input type="number" id="grand_total" readonly></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- ===================== -->
+        <!-- 4. Footer (Payment)   -->
+        <!-- ===================== -->
+        <div id="Footer">
+            <h2>Payment Details</h2>
+            <div class="row">
+                <label for="abn">ABN:</label>
+                <input type="text" id="abn" value="37 736 616 146">
+            </div>
+            <div class="row">
+                <label for="acct_name">Please make any checks payable to</label>
+                <input type="text" id="acct_name" value="Isaac Reefman">
+            </div>
+            <div class="row">
+                <label for="bsb">BSB:</label>
+                <input type="text" id="bsb" value="814 282">
+                <label for="acct_num">Account Number:</label>
+                <input type="text" id="acct_num" value="5183 3625">
+            </div>
+        </div>
+
     </div>
-    <div>
-      <label>ABN</label>
-      <input type="text" id="my_abn">
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <label>Email</label>
-      <input type="email" id="my_email">
-    </div>
-    <div>
-      <label>Phone</label>
-      <input type="text" id="my_phone">
-    </div>
-  </div>
-
-  <div class="row full">
-    <label>Address</label>
-    <input type="text" id="my_address">
-  </div>
-</div>
-
-<!-- ===================== -->
-  <!-- 2. Customer Info       -->
-  <!-- ===================== -->
-<div id="CustInfo" class="section two-col">
-  <h2>Customer Details</h2>
-
-  <div class="row">
-    <div>
-      <label>Name</label>
-      <input type="text" id="cust_name">
-    </div>
-    <div>
-      <label>Company</label>
-      <input type="text" id="cust_company">
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <label>Email</label>
-      <input type="email" id="cust_email">
-    </div>
-    <div>
-      <label>Phone</label>
-      <input type="text" id="cust_phone">
-    </div>
-  </div>
-
-  <div class="row full">
-    <label>Address</label>
-    <input type="text" id="cust_address">
-  </div>
-</div>
-
-  <!-- ===================== -->
-  <!-- 3. Line Items Table    -->
-  <!-- ===================== -->
-  <div id="LineItems" class="section">
-    <h2>Line Items</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th class="qty">Qty</th>
-          <th class="desc">Description</th>
-          <th class="rate">Rate</th>
-          <th class="total">Total</th>
-        </tr>
-      </thead>
-
-      <tbody id="itemRows">
-        <tr>
-          <td><input type="number" class="qtyField"></td>
-          <td><textarea class="descField"></textarea></td>
-          <td><input type="number" class="rateField"></td>
-          <td><input type="number" class="totalField" readonly></td>
-        </tr>
-      </tbody>
-
-      <tfoot>
-        <tr>
-          <td colspan="3" class="right">Subtotal</td>
-          <td><input type="number" id="subtotal" readonly></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="right">GST</td>
-          <td><input type="number" id="gst" readonly></td>
-        </tr>
-        <tr>
-          <td colspan="3" class="right"><strong>Total</strong></td>
-          <td><input type="number" id="grand_total" readonly></td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <!-- ===================== -->
-  <!-- 4. Footer (Payment)   -->
-  <!-- ===================== -->
-  <div id="Footer" class="pay-row">
-  <h2>Payment Details</h2>
-
-  <div class="row">
-    <div>
-      <label>BSB</label>
-      <input type="text" id="bsb">
-    </div>
-    <div>
-      <label>Account Number</label>
-      <input type="text" id="acct_num">
-    </div>
-    <div>
-      <label>Account Name</label>
-      <input type="text" id="acct_name">
-    </div>
-  </div>
-  </div>
-
-</div>
 
 </body>
+<script src="script.js"></script>
+
 </html>
